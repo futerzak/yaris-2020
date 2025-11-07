@@ -1,34 +1,39 @@
 import { carData } from '../data/carData'
-import { ImagePlaceholder, PhotoOrPlaceholder } from './ImagePlaceholder'
 import { ceramicCoatingPhoto } from '../data/photos'
+import { ImagePlaceholder } from './ImagePlaceholder'
 
 export function Addons() {
-  // ceramic photo provided via data/photos
   return (
-    <section className="border-b border-neutral-200 bg-neutral-50">
-      <div className="container py-12 md:py-16">
-        <div className="grid items-start gap-8 md:grid-cols-2">
+    <section className="border-b border-neutral-200 bg-white">
+      <div className="container py-16 md:py-20">
+        <div className="grid items-start gap-12 lg:grid-cols-2">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Dodatki i stan</div>
-            <h3 className="mt-2 text-2xl font-extrabold tracking-tight md:text-3xl">Pakiet Dodatków ASO & Stan</h3>
-            <ul className="mt-5 space-y-3">
+            <div className="mb-2 text-sm font-bold uppercase tracking-wider text-[--color-tokyo-red]">
+              Dodatki i Stan
+            </div>
+            <h3 className="text-3xl font-black tracking-tight md:text-4xl">Pakiet Dodatków ASO & Stan</h3>
+            <ul className="mt-8 space-y-4">
               {carData.addons.map((a) => (
-                <li key={a} className="flex items-start gap-3">
+                <li key={a} className="flex items-start gap-4 rounded-xl bg-neutral-50 p-4 transition hover:bg-neutral-100">
                   <span
                     className={
-                      'mt-1 inline-flex h-2.5 w-2.5 flex-none rounded-full ' +
+                      'mt-1 inline-flex h-3 w-3 flex-none rounded-full ' +
                       (a.toLowerCase().includes('bagażnik') ? 'bg-[--color-tokyo-red]' : 'bg-neutral-400')
                     }
                   />
-                  <span className={a.toLowerCase().includes('bagażnik') ? 'font-extrabold text-[--color-tokyo-red]' : ''}>{a}</span>
+                  <span className={a.toLowerCase().includes('bagażnik') ? 'font-bold text-[--color-tokyo-red]' : ''}>
+                    {a}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Wizualnie</div>
-            <div className="mt-3 grid gap-4 sm:grid-cols-2">
-              <PhotoOrPlaceholder alt={ceramicCoatingPhoto.alt} src={ceramicCoatingPhoto.url} external={ceramicCoatingPhoto.external} />
+            <div className="mb-4 text-sm font-bold uppercase tracking-wide text-neutral-600">Wizualnie</div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="overflow-hidden rounded-2xl shadow-lg">
+                <img src={ceramicCoatingPhoto.url} alt={ceramicCoatingPhoto.alt} className="h-full w-full object-cover" />
+              </div>
               <ImagePlaceholder label="Czujniki parkowania — integracja z kamerą" />
             </div>
           </div>
@@ -37,5 +42,3 @@ export function Addons() {
     </section>
   )
 }
-
-
