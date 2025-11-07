@@ -2,8 +2,9 @@
 
 @theme {
   /* Brand colors */
-  --color-tokyo-red: #c4142f; /* Tokyo Red */
-  --color-night-sky: #0b0b0d; /* Night Sky Black */
+  /* Refined brand palette matching car colors */
+  --color-tokyo-red: #b0122b; /* deep red accent */
+  --color-night-sky: #0a0a0b; /* near-black */
   --color-gold: #c9a227; /* subtle premium accent */
 
   /* Typography */
@@ -19,6 +20,12 @@
   body {
     @apply bg-white text-neutral-900 antialiased;
     font-family: var(--font-sans);
+  }
+  a {
+    color: var(--color-tokyo-red);
+  }
+  h1, h2, h3, h4, h5 {
+    @apply tracking-tight;
   }
 }
 

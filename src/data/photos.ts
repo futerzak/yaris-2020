@@ -7,8 +7,8 @@ export type PhotoRef = {
 const album = 'https://photos.app.goo.gl/fpaMcQiCQcQ3ri4q9';
 
 export const heroPhoto: PhotoRef = {
-  alt: 'Toyota Yaris Hybrid 1.5 — ujęcie front 3/4 (Tokyo Fusion)',
-  external: album,
+  alt: 'Toyota Yaris Hybrid 1.5 — lewy przedni róg (Tokyo Fusion)',
+  external: 'https://photos.app.goo.gl/9cCz587FoL7XhfWr7',
 };
 
 export const expertSidePhoto: PhotoRef = {
@@ -35,6 +35,11 @@ export const interiorDetail: PhotoRef = {
 export const serviceSidePhoto: PhotoRef = {
   alt: 'Dokumentacja ASO / zdjęcie z wizyty serwisowej',
   external: album,
+};
+
+export const ceramicCoatingPhoto: PhotoRef = {
+  alt: 'Powłoka ceramiczna — po aplikacji (09.01.2021)',
+  external: 'https://photos.app.goo.gl/KK31JgCfkKbWeZJM8',
 };
 
 

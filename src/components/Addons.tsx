@@ -1,8 +1,9 @@
 import { carData } from '../data/carData'
-import { ImagePlaceholder } from './ImagePlaceholder'
+import { ImagePlaceholder, PhotoOrPlaceholder } from './ImagePlaceholder'
+import { ceramicCoatingPhoto } from '../data/photos'
 
 export function Addons() {
-  const ceramicLabel = 'Powłoka Ceramiczna — książka gwarancyjna / dokumentacja foto'
+  // ceramic photo provided via data/photos
   return (
     <section className="border-b border-neutral-200 bg-neutral-50">
       <div className="container py-12 md:py-16">
@@ -27,7 +28,7 @@ export function Addons() {
           <div>
             <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Wizualnie</div>
             <div className="mt-3 grid gap-4 sm:grid-cols-2">
-              <ImagePlaceholder label={ceramicLabel} />
+              <PhotoOrPlaceholder alt={ceramicCoatingPhoto.alt} src={ceramicCoatingPhoto.url} external={ceramicCoatingPhoto.external} />
               <ImagePlaceholder label="Czujniki parkowania — integracja z kamerą" />
             </div>
           </div>
