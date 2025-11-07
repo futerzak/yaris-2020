@@ -18,17 +18,17 @@ export const expertSidePhoto: PhotoRef = {
   url: '/Yaris/20250901_131532.jpg',
 };
 
-// Gallery: curated best shots from Sept 2025 (full car, clean angles)
+// Gallery: curated best shots (full car, clean angles, details)
 export const designPhotos: PhotoRef[] = [
-  { alt: 'Tył — lampy LED i zderzak', url: '/Yaris/20250901_131640.jpg' },
-  { alt: 'Tył 3/4 — lampy LED i proporcje', url: '/Yaris/20250901_131546.jpg' },
-  { alt: 'Profil boczny — linia i 17" felgi', url: '/Yaris/20250901_131621.jpg' },
-  { alt: 'Front 3/4 — Tokyo Red w pełnym blasku', url: '/Yaris/20250901_131522.jpg' },
-  { alt: 'Profil boczny — dynamiczna linia', url: '/Yaris/20250901_131532.jpg' },
-  { alt: 'Front — grill i reflektory LED', url: '/Yaris/20250901_131605.jpg' },
-  { alt: 'Detal — 17" alufelga', url: '/Yaris/20250901_131650.jpg' },
-  { alt: 'Reflektory LED — zbliżenie', url: '/Yaris/20251020_054955.jpg' },
-  { alt: 'Oryginalny bagażnik dachowy Toyota', url: '/Yaris/20251020_055001.jpg' },
+  { alt: 'Reflektory LED — pełna technologia światła', url: '/Yaris/20251020_054955.jpg' },
+  { alt: 'Profil boczny — kontrastowy dach i 17" felgi', url: '/Yaris/20250901_131621.jpg' },
+  { alt: 'Oryginalny bagażnik dachowy Toyota z ASO', url: '/Yaris/20251020_055001.jpg' },
+  { alt: 'Tył z bagażnikiem — lampy LED i sportowa linia', url: '/Yaris/20250901_131640.jpg' },
+  { alt: 'Tył 3/4 z bagażnikiem — kompletny widok', url: '/Yaris/20250901_131546.jpg' },
+  { alt: 'Detal — 17" alufelga Premiere Edition', url: '/Yaris/20250901_131650.jpg' },
+  { alt: 'Drobna rysa na plastikowym błotniku — transparentność', url: '/Yaris/20251020_165537.jpg' },
+  { alt: 'Wnętrze — fotel kierowcy i kokpit', url: '/Yaris/IMG_20201222_072516.jpg' },
+  { alt: 'Wnętrze — drzwi i panel boczny', url: '/Yaris/IMG_20201222_072710.jpg' },
 ];
 
 export const interiorHero: PhotoRef = {
