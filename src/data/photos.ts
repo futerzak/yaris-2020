@@ -57,4 +57,10 @@ export const conditionPhotos: PhotoRef[] = [
   { alt: 'Drobne rysy na plastikowych elementach', url: '/Yaris/20251020_165537.jpg' },
 ];
 
+// Wheels: summer and winter sets
+export const wheelsPhotos: PhotoRef[] = [
+  { alt: 'Letnie 17" Premiere Edition — dwukolorowe alufelgi', url: '/Yaris/20250901_131650.jpg' },
+  { alt: 'Zimowe 17" alufelgi — kompletny zestaw', url: '/Yaris/IMG_20210225_111437.jpg' },
+];
+
 

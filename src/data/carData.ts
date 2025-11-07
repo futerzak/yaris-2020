@@ -51,7 +51,7 @@ export const carData: CarData = {
   ],
   addons: [
     'Powłoka ceramiczna z 9-letnią gwarancją (ok. 4 lata pozostałe)',
-    'Komplet kół zimowych na alufelgach 17” (gotowy zestaw)',
+    'Dwa komplety kół: letnie 17" Premiere Edition + zimowe 17" alufelgi (gotowe zestawy)',
     'Oryginalny bagażnik dachowy Toyota — zakup i montaż udokumentowany w ASO (3.01.2022)',
     'Czujniki parkowania przód — profesjonalna integracja ASO z kamerą',
   ],
