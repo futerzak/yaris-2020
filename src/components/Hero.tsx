@@ -1,4 +1,3 @@
-import React from 'react'
 import { carData } from '../data/carData'
 import { heroPhoto } from '../data/photos'
 import { PhotoOrPlaceholder } from './ImagePlaceholder'

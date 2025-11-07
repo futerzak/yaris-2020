@@ -1,4 +1,3 @@
-import React from 'react'
 import { keyFacts } from '../data/carData'
 
 export function KeyFacts() {
