@@ -36,12 +36,48 @@
   max-width: 1200px;
 }
 
+/* Brand backgrounds */
+.bg-brand-hero {
+  background: radial-gradient(1200px 500px at 20% -10%, rgba(176, 18, 43, 0.10), transparent),
+              radial-gradient(900px 400px at 90% 10%, rgba(10, 10, 11, 0.10), transparent),
+              linear-gradient(#ffffff, #fafafa);
+}
+.bg-section-tint {
+  background: linear-gradient(180deg, rgba(176, 18, 43, 0.03), rgba(10, 10, 11, 0.02));
+}
+.bg-footer-gradient {
+  background: linear-gradient(180deg, #0a0a0b, #000);
+}
+
+/* Tiles */
+.tile {
+  @apply rounded-2xl border border-neutral-200 bg-white/85 shadow-sm backdrop-blur-sm transition; 
+}
+.tile:hover { 
+  box-shadow: 0 12px 32px -16px rgba(10, 10, 11, 0.25);
+  transform: translateY(-1px);
+}
+.tile--tinted { 
+  background: linear-gradient(180deg, rgba(176, 18, 43, 0.06), rgba(255, 255, 255, 0.9));
+}
+.tile-title { 
+  @apply text-xs font-semibold uppercase tracking-wide text-neutral-500;
+}
+.tile-value { 
+  @apply mt-1 text-sm font-medium text-neutral-900 leading-snug;
+}
+
 /* Reusable UI atoms */
 .badge {
   @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide;
+  background-color: var(--color-night-sky);
+  color: white;
 }
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-lg bg-[--color-tokyo-red] px-6 py-3 font-semibold text-white shadow-lg shadow-[--color-tokyo-red]/30 transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[--color-tokyo-red];
+  @apply inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold text-white transition focus:outline-none focus:ring-2 focus:ring-offset-2;
+  background-color: var(--color-tokyo-red);
+  box-shadow: 0 10px 25px -10px rgb(176 18 43 / 0.5);
+  --tw-ring-color: var(--color-tokyo-red);
 }
 .btn-outline {
   @apply inline-flex items-center justify-center rounded-lg border-2 border-neutral-900 px-5 py-2.5 font-semibold text-neutral-900 transition hover:bg-neutral-900 hover:text-white;

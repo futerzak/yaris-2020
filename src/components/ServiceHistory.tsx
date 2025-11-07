@@ -13,7 +13,7 @@ export function ServiceHistory() {
               Serwis wyłącznie w ASO, regularne testy baterii hybrydowej. Pozycja dotycząca bagażnika dachowego została
               wyróżniona poniżej.
             </p>
-            <div className="mt-6 overflow-hidden rounded-xl border border-neutral-200">
+            <div className="mt-6 overflow-hidden rounded-xl border border-[--color-tokyo-red]/30">
               <table className="min-w-full divide-y divide-neutral-200">
                 <thead className="bg-neutral-50">
                   <tr>

@@ -3,7 +3,7 @@ import { carData } from '../data/carData'
 export function CTA() {
   const phonePretty = carData.phone.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3')
   return (
-    <footer className="bg-[--color-night-sky] text-white">
+    <footer className="bg-footer-gradient text-white">
       <div className="container py-12 md:py-16">
         <h2 className="text-2xl font-extrabold tracking-tight md:text-3xl">Jazda Próbna Zmienia Zdanie. Zadzwoń.</h2>
         <p className="mt-3 max-w-prose text-neutral-300">

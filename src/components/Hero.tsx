@@ -6,11 +6,11 @@ import { KeyFacts } from './KeyFacts'
 export function Hero() {
   const phonePretty = carData.phone.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3')
   return (
-    <header className="relative border-b border-neutral-200 bg-gradient-to-b from-white to-neutral-50">
+    <header className="relative border-b border-neutral-200 bg-brand-hero">
       <div className="container py-10 sm:py-14 md:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
-            <span className="badge bg-[--color-night-sky] text-white">Raport Sprzedażowy</span>
+            <span className="badge">Raport Sprzedażowy</span>
             <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl">
               TOYOTA YARIS HYBRID 1.5 — RAPORT SPECJALNY
             </h1>
