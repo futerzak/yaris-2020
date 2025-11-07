@@ -17,9 +17,15 @@ export const expertSidePhoto: PhotoRef = {
 };
 
 export const designPhotos: PhotoRef[] = [
-  { alt: 'Front 3/4 z kontrastowym czarnym dachem', external: album },
-  { alt: 'Profil boczny — 17-calowe alufelgi', external: album },
-  { alt: 'Pełne światła LED — przód/tył', external: album },
+  { alt: 'Lewy przedni róg — kontrastowy czarny dach', external: 'https://photos.app.goo.gl/9cCz587FoL7XhfWr7' },
+  { alt: 'Po aplikacji powłoki ceramicznej (09.01.2021)', external: 'https://photos.app.goo.gl/KK31JgCfkKbWeZJM8' },
+  { alt: 'Front 3/4 — światła LED i grill', external: album },
+  { alt: 'Profil boczny — linia nadwozia i 17” felgi', external: album },
+  { alt: 'Detal — 17” alufelga Tokyo Premiere', external: album },
+  { alt: 'Tył — lampy LED i zderzak', external: album },
+  { alt: 'Kontrastowy dach Night Sky Black — detal słupka', external: album },
+  { alt: 'Maska i reflektory — zbliżenie', external: album },
+  { alt: 'Linia boczna — proporcje i przetłoczenia', external: album },
 ];
 
 export const interiorHero: PhotoRef = {
