@@ -20,15 +20,15 @@ export const expertSidePhoto: PhotoRef = {
 
 // Gallery: curated best shots from Sept 2025 (full car, clean angles)
 export const designPhotos: PhotoRef[] = [
+  { alt: 'Tył — lampy LED i zderzak', url: '/Yaris/20250901_131640.jpg' },
+  { alt: 'Tył 3/4 — lampy LED i proporcje', url: '/Yaris/20250901_131546.jpg' },
+  { alt: 'Profil boczny — linia i 17" felgi', url: '/Yaris/20250901_131621.jpg' },
   { alt: 'Front 3/4 — Tokyo Red w pełnym blasku', url: '/Yaris/20250901_131522.jpg' },
   { alt: 'Profil boczny — dynamiczna linia', url: '/Yaris/20250901_131532.jpg' },
-  { alt: 'Tył 3/4 — lampy LED i proporcje', url: '/Yaris/20250901_131546.jpg' },
   { alt: 'Front — grill i reflektory LED', url: '/Yaris/20250901_131605.jpg' },
-  { alt: 'Profil z kontrastowym dachem', url: '/Yaris/20250901_131621.jpg' },
-  { alt: 'Tył — lampy i zderzak', url: '/Yaris/20250901_131640.jpg' },
   { alt: 'Detal — 17" alufelga', url: '/Yaris/20250901_131650.jpg' },
-  { alt: 'Bryła z boku — elegancja linii', url: '/Yaris/20250901_131659.jpg' },
-  { alt: 'Całość — Tokyo Fusion', url: '/Yaris/20250901_131711.jpg' },
+  { alt: 'Reflektory LED — zbliżenie', url: '/Yaris/20251020_054955.jpg' },
+  { alt: 'Oryginalny bagażnik dachowy Toyota', url: '/Yaris/20251020_055001.jpg' },
 ];
 
 export const interiorHero: PhotoRef = {
@@ -50,5 +50,11 @@ export const ceramicCoatingPhoto: PhotoRef = {
   alt: 'Powłoka ceramiczna — po aplikacji (styczeń 2021)',
   url: '/Yaris/IMG_20210110_181542.jpg',
 };
+
+// Condition photos: minor scratches on plastic trim (transparency)
+export const conditionPhotos: PhotoRef[] = [
+  { alt: 'Rysa na plastikowym zderzaku — transparentność stanu', url: '/Yaris/20251020_165548.jpg' },
+  { alt: 'Drobne rysy na plastikowych elementach', url: '/Yaris/20251020_165537.jpg' },
+];
 
 

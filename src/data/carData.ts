@@ -32,7 +32,7 @@ export const carData: CarData = {
   color: 'Tokyo Red / Night Sky Black (Tokyo Fusion) – lakier specjalny z kontrastowym dachem',
   drivetrain: 'Hybrid (e-CVT)',
   power: '116 KM',
-  price: '78 000 PLN',
+  price: '82 000 PLN',
   negotiable: true,
   location: 'Kraków',
   phone: '535504117',

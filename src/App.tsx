@@ -4,6 +4,7 @@ import { Gallery } from './components/Gallery'
 import { InteriorSection } from './components/InteriorSection'
 import { ServiceHistory } from './components/ServiceHistory'
 import { Addons } from './components/Addons'
+import { ConditionSection } from './components/ConditionSection'
 import { CTA } from './components/CTA'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <InteriorSection />
       <ServiceHistory />
       <Addons />
+      <ConditionSection />
       <CTA />
     </div>
   )
