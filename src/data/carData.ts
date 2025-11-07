@@ -57,7 +57,7 @@ export const carData: CarData = {
   ],
   serviceHistory: [
     { date: '2020-12-21', title: 'Dostawa pojazdu' },
-    { date: '2021-02-24', odometerKm: 2837, title: 'Naprawa', note: 'Mała naprawa po dotarciu, szczegóły w dokumentacji' },
+    { date: '2021-02-24', odometerKm: 2837, title: 'Serwis po dotarciu', note: 'Montaż czujników parkowania przód + wymiana oleju' },
     { date: '2021-12-21', odometerKm: 13585, title: 'Test baterii układu hybrydowego' },
     { date: '2021-12-21', odometerKm: 13585, title: 'Obsługa w serwisie' },
     {
