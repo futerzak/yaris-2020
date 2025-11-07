@@ -1,0 +1,40 @@
+export type PhotoRef = {
+  url?: string; // direct image URL if available
+  alt: string;
+  external?: string; // fallback link to album or photo page
+};
+
+const album = 'https://photos.app.goo.gl/fpaMcQiCQcQ3ri4q9';
+
+export const heroPhoto: PhotoRef = {
+  alt: 'Toyota Yaris Hybrid 1.5 — ujęcie front 3/4 (Tokyo Fusion)',
+  external: album,
+};
+
+export const expertSidePhoto: PhotoRef = {
+  alt: 'Detal technologii / TSS — kamera/radar w osłonie',
+  external: album,
+};
+
+export const designPhotos: PhotoRef[] = [
+  { alt: 'Front 3/4 z kontrastowym czarnym dachem', external: album },
+  { alt: 'Profil boczny — 17-calowe alufelgi', external: album },
+  { alt: 'Pełne światła LED — przód/tył', external: album },
+];
+
+export const interiorHero: PhotoRef = {
+  alt: 'Wnętrze — kokpit kierowcy i kierownica',
+  external: album,
+};
+
+export const interiorDetail: PhotoRef = {
+  alt: 'Ekran 8" i panel klimatyzacji dwustrefowej',
+  external: album,
+};
+
+export const serviceSidePhoto: PhotoRef = {
+  alt: 'Dokumentacja ASO / zdjęcie z wizyty serwisowej',
+  external: album,
+};
+
+
