@@ -10,19 +10,30 @@ export function CTA() {
 
       <div className="container relative z-10 py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
-            Jazda Próbna Zmienia Zdanie. Zadzwoń.
+          <div className="text-5xl">🏠</div>
+          <h2 className="mt-6 text-3xl font-black tracking-tight md:text-4xl lg:text-5xl">
+            Daj Temu Yaris Nowy Dom
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-300">
-            Sprzedaż prywatna. Możliwość weryfikacji stanu i historii. Lokalizacja oględzin: <strong>{carData.location}</strong>.
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300">
+            Ten samochód zasługuje na kolejnego fana motoryzacji. Przekażemy Ci całą dokumentację, porady i historię.
+            To nie tylko samochód — to kawałek naszej rodzinnej historii.
           </p>
+          <div className="mx-auto mt-8 max-w-xl rounded-xl bg-white/10 p-6 backdrop-blur-md">
+            <div className="text-sm font-semibold uppercase tracking-wide text-white/80">Sprzedaż Prywatna</div>
+            <div className="mt-2 text-white">
+              Możliwość weryfikacji w ASO • Pełna dokumentacja • Lokalizacja: <strong>{carData.location}</strong>
+            </div>
+          </div>
           <div className="mt-10">
             <a href={`tel:${carData.phone}`} className="btn-primary text-xl">
               SKONTAKTUJ SIĘ: {phonePretty}
             </a>
           </div>
+          <p className="mt-6 text-sm text-neutral-400">
+            Zadzwoń lub napisz — odpowiemy na wszystkie pytania i umówimy oględziny.
+          </p>
           <div className="mt-12 border-t border-white/10 pt-8 text-sm text-neutral-400">
-            © 2025 Toyota Yaris Hybrid 1.5 — Raport Sprzedażowy
+            © 2025 Toyota Yaris Hybrid 1.5 — Od Rodziny Fana Motoryzacji
           </div>
         </div>
       </div>

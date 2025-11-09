@@ -19,7 +19,12 @@ export function Hero() {
       {/* Content */}
       <div className="container relative z-10 flex min-h-[85vh] flex-col justify-center py-16 text-white">
         <div className="max-w-3xl">
-          <span className="badge animate-fade-in">Raport Sprzedażowy</span>
+          <div className="flex flex-wrap items-center gap-3 animate-fade-in">
+            <span className="badge">Raport Sprzedażowy</span>
+            <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide backdrop-blur-md">
+              Od Rodziny Fana Motoryzacji
+            </span>
+          </div>
           <h1 className="mt-6 animate-slide-up text-4xl font-black tracking-tight drop-shadow-2xl sm:text-5xl md:text-6xl lg:text-7xl">
             TOYOTA YARIS
             <br />

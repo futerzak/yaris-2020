@@ -83,4 +83,47 @@ export const keyFacts: Array<{ label: string; value: string }> = [
   { label: 'Lokalizacja', value: 'Kraków' },
 ];
 
+// Owner story and emotional context
+export const ownerStory = {
+  headline: 'Historia Tego Auta',
+  story: `Grudzień 2020. Pierwszy samochód z polskiego salonu. Miał być z nami przez lata — regularny serwis, ceramika, dwa komplety kół, każdy detal dopięty na ostatni guzik. Ale życie pisze własne scenariusze: nasza rodzina urosła do 5 osób i ten piękny, sportowy Yaris po prostu się nie mieści. Sprzedajemy go z ciężkim sercem, ale z pełną dokumentacją i nadzieją, że trafi do kolejnego fana Toyoty.`,
+  whySelling: 'Nasza rodzina urosła do 5 osób (2 dorosłych + 3 dzieci) i potrzebujemy większego auta. Yaris to fenomenalny samochód, ale po prostu za mały dla naszych potrzeb. Gdybyśmy byli we dwoje lub troje — zostałby z nami do końca.',
+};
+
+// Value breakdown
+export const valueAddedItems = [
+  { item: 'Powłoka ceramiczna (4 lata gwarancji pozostałe)', value: 2000 },
+  { item: 'Drugi komplet kół na alufelgach 17"', value: 3000 },
+  { item: 'Oryginalny bagażnik dachowy Toyota', value: 1500 },
+  { item: 'Pełna historia serwisowa ASO', value: 'bezcenne' as const },
+];
+
+// FAQ
+export const faqItems = [
+  {
+    question: 'Dlaczego sprzedajecie?',
+    answer: 'Nasza rodzina urosła do 5 osób (2 dorosłych + 3 dzieci) i potrzebujemy większego auta. Yaris to fenomenalny samochód, ale po prostu za mały dla naszych potrzeb. Gdybyśmy byli we dwoje lub troje — zostałby z nami do końca.',
+  },
+  {
+    question: 'Czy były wypadki?',
+    answer: 'NIE. Auto ma pełną dokumentację z ASO i nigdy nie było w wypadku. Wszystkie drobne rysy eksploatacyjne (wyłącznie na plastikach) pokazujemy transparentnie w sekcji stanu technicznego.',
+  },
+  {
+    question: 'Czy auto jest finansowane lub obciążone?',
+    answer: 'NIE. Samochód jest w pełni opłacony, wolny od jakichkolwiek obciążeń. Przy transakcji otrzymasz wszystkie dokumenty potwierdzające własność.',
+  },
+  {
+    question: 'Czy mogę zobaczyć auto w ASO?',
+    answer: 'TAK. Chętnie umówimy wspólną wizytę w ASO Toyota, gdzie możesz zweryfikować historię serwisową i stan techniczny z mechanikiem.',
+  },
+  {
+    question: 'Czy jest możliwość negocjacji ceny?',
+    answer: 'TAK, w rozsądnych granicach. Cena 82 000 PLN uwzględnia wartość wszystkich dodatków (ceramika, dwa komplety kół, bagażnik) i niski przebieg ASO. Jesteśmy otwarci na rozmowę.',
+  },
+  {
+    question: 'Co dostaję przy zakupie?',
+    answer: 'Pełen pakiet: samochód, dwa komplety kół (letnie + zimowe na alufelgach 17"), bagażnik dachowy, wszystkie dokumenty, książkę serwisową, dokumentację ceramiki, kluczyki (2 komplety) oraz naszą pełną wiedzę o aucie i porady.',
+  },
+];
+
 
