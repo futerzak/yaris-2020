@@ -58,6 +58,12 @@ export const carData: CarData = {
   serviceHistory: [
     { date: '2020-12-21', title: 'Dostawa pojazdu' },
     { date: '2021-02-24', odometerKm: 2837, title: 'Serwis po dotarciu', note: 'Montaż czujników parkowania przód + wymiana oleju' },
+    {
+      date: '2021-12-04',
+      title: 'Naprawa blacharsko-lakiernicza ASO',
+      note: 'Incydent parkingowy: wymiana lewych tylnych drzwi + nałożenie ceramiki na nowy element',
+      highlight: true,
+    },
     { date: '2021-12-21', odometerKm: 13585, title: 'Test baterii układu hybrydowego' },
     { date: '2021-12-21', odometerKm: 13585, title: 'Obsługa w serwisie' },
     {
@@ -105,8 +111,8 @@ export const faqItems = [
     answer: 'Nasza rodzina urosła do 5 osób (2 dorosłych + 3 dzieci) i potrzebujemy większego auta. Yaris to fenomenalny samochód, ale po prostu za mały dla naszych potrzeb. Gdybyśmy byli we dwoje lub troje — zostałby z nami do końca.',
   },
   {
-    question: 'Czy były wypadki?',
-    answer: 'NIE. Auto ma pełną dokumentację z ASO i nigdy nie było w wypadku. Wszystkie drobne rysy eksploatacyjne (wyłącznie na plastikach) pokazujemy transparentnie w sekcji stanu technicznego.',
+    question: 'Czy były wypadki lub uszkodzenia?',
+    answer: 'Był jeden incydent parkingowy (4.12.2021) — wgniecenie i obtarcie lewych tylnych drzwi. Naprawa wykonana w ASO Toyota: wymiana drzwi na nowe oryginalne + profesjonalne nałożenie ceramiki na nowy element. Pełna dokumentacja naprawy. Poza tym wszystkie drobne rysy eksploatacyjne (wyłącznie na plastikach) pokazujemy transparentnie w sekcji stanu technicznego.',
   },
   {
     question: 'Czy auto jest finansowane lub obciążone?',

@@ -21,9 +21,9 @@ export function TrustBadges() {
       description: 'Przebieg potwierdzony dokumentacją ASO',
     },
     {
-      icon: '🚫',
-      title: 'Bez Wypadków',
-      description: 'Nigdy nie uczestniczył w kolizji',
+      icon: '🔧',
+      title: 'Naprawa ASO',
+      description: 'Jeden incydent parkingowy — naprawa w ASO',
     },
     {
       icon: '💰',
