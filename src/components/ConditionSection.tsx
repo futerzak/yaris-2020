@@ -29,12 +29,12 @@ export function ConditionSection() {
                   ℹ️
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-blue-900">Historia Naprawy (2021)</h3>
+                  <h3 className="text-xl font-bold text-blue-900">Historia Naprawy (2021-2022)</h3>
                   <p className="mt-3 text-blue-800">
                     <strong>4 grudnia 2021:</strong> Incydent parkingowy — wgniecenie i obtarcie lewych tylnych drzwi.
                   </p>
                   <p className="mt-2 text-blue-800">
-                    <strong>Naprawa w ASO Toyota:</strong> Wymiana drzwi na nowe oryginalne + profesjonalne nałożenie
+                    <strong>Styczeń/Luty 2022 — Naprawa w ASO Toyota:</strong> Wymiana drzwi na nowe oryginalne + profesjonalne nałożenie
                     powłoki ceramicznej na nowy element (zgodnie z resztą nadwozia).
                   </p>
                   <p className="mt-3 text-sm text-blue-700">

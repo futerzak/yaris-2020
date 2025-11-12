@@ -58,12 +58,6 @@ export const carData: CarData = {
   serviceHistory: [
     { date: '2020-12-21', title: 'Dostawa pojazdu' },
     { date: '2021-02-24', odometerKm: 2837, title: 'Serwis po dotarciu', note: 'Montaż czujników parkowania przód + wymiana oleju' },
-    {
-      date: '2021-12-04',
-      title: 'Naprawa blacharsko-lakiernicza ASO',
-      note: 'Incydent parkingowy: wymiana lewych tylnych drzwi + nałożenie ceramiki na nowy element',
-      highlight: true,
-    },
     { date: '2021-12-21', odometerKm: 13585, title: 'Test baterii układu hybrydowego' },
     { date: '2021-12-21', odometerKm: 13585, title: 'Obsługa w serwisie' },
     {
@@ -71,6 +65,12 @@ export const carData: CarData = {
       odometerKm: 14050,
       title: 'ZAKUP/MONTAŻ AKCESORIÓW ASO',
       note: 'Bagażnik Dachowy',
+      highlight: true,
+    },
+    {
+      date: '2022-02-01',
+      title: 'Naprawa blacharsko-lakiernicza ASO',
+      note: 'Incydent parkingowy (4.12.2021): wymiana lewych tylnych drzwi + nałożenie ceramiki na nowy element',
       highlight: true,
     },
     { date: '2022-12-14', odometerKm: 23830, title: 'Test baterii układu hybrydowego' },
