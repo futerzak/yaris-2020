@@ -46,8 +46,8 @@ export const interiorHero: PhotoRef = {
 };
 
 export const interiorDetail: PhotoRef = {
-  alt: 'Ekran 8" i panel klimatyzacji dwustrefowej',
-  url: "/Yaris/IMG_20201222_072702.jpg",
+  alt: "Head-Up Display (HUD) — projekcja informacji na przedniej szybie",
+  url: "/Yaris/20251030_070108.jpg",
 };
 
 export const serviceSidePhoto: PhotoRef = {
