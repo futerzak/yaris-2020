@@ -48,6 +48,7 @@ export const carData: CarData = {
     'Automatyczna klimatyzacja dwustrefowa',
     'Podgrzewane fotele',
     '8-calowy ekran multimedialny',
+    'Head-Up Display (HUD) — projekcja informacji na przedniej szybie',
   ],
   addons: [
     'Powłoka ceramiczna z 9-letnią gwarancją (ok. 4 lata pozostałe)',

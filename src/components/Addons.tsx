@@ -1,6 +1,5 @@
 import { carData } from '../data/carData'
-import { ceramicCoatingPhoto } from '../data/photos'
-import { ImagePlaceholder } from './ImagePlaceholder'
+import { ceramicCoatingPhoto, parkingSensorsPhoto } from '../data/photos'
 
 export function Addons() {
   return (
@@ -34,7 +33,9 @@ export function Addons() {
               <div className="overflow-hidden rounded-2xl shadow-lg">
                 <img src={ceramicCoatingPhoto.url} alt={ceramicCoatingPhoto.alt} className="h-full w-full object-cover" />
               </div>
-              <ImagePlaceholder label="Czujniki parkowania przód — profesjonalna integracja ASO" />
+              <div className="overflow-hidden rounded-2xl shadow-lg">
+                <img src={parkingSensorsPhoto.url} alt={parkingSensorsPhoto.alt} className="h-full w-full object-cover" />
+              </div>
             </div>
           </div>
         </div>

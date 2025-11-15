@@ -56,8 +56,13 @@ export const serviceSidePhoto: PhotoRef = {
 };
 
 export const ceramicCoatingPhoto: PhotoRef = {
-  alt: "Powłoka ceramiczna — po aplikacji (styczeń 2021)",
-  url: "/Yaris/IMG_20210110_181542.jpg",
+  alt: "Head-Up Display (HUD) — projekcja na przedniej szybie",
+  url: "/Yaris/20251030_070108.jpg",
+};
+
+export const parkingSensorsPhoto: PhotoRef = {
+  alt: "Czujniki parkowania przód — profesjonalna integracja ASO",
+  url: "/Yaris/20250901_131650.jpg",
 };
 
 // Condition photos: minor scratches on plastic trim (transparency)
