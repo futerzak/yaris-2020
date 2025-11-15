@@ -35,7 +35,7 @@ export const carData: CarData = {
   price: '82 000 PLN',
   negotiable: true,
   location: 'Kraków',
-  phone: '535504117',
+  phone: '608678027',
   tssSystems: [
     'PCS – Pre-Collision System',
     'LDA – Lane Departure Alert z asystą kierowania',
