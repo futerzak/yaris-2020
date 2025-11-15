@@ -42,8 +42,8 @@ export const interiorDetail: PhotoRef = {
 };
 
 export const serviceSidePhoto: PhotoRef = {
-  alt: 'Widok z góry — dach Night Sky Black',
-  url: '/Yaris/20250901_131728.jpg',
+  alt: 'Profil z bagażnikiem dachowym — kompletny widok',
+  url: '/Yaris/20250901_131546.jpg',
 };
 
 export const ceramicCoatingPhoto: PhotoRef = {
