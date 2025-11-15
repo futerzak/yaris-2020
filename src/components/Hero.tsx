@@ -28,7 +28,7 @@ export function Hero() {
           <h1 className="mt-6 animate-slide-up text-4xl font-black tracking-tight drop-shadow-2xl sm:text-5xl md:text-6xl lg:text-7xl">
             TOYOTA YARIS
             <br />
-            <span className="bg-gradient-to-r from-[--color-tokyo-red] to-red-400 bg-clip-text text-transparent drop-shadow-lg">
+            <span className="text-[--color-tokyo-red] drop-shadow-lg">
               HYBRID 1.5
             </span>
           </h1>
