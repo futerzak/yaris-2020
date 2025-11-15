@@ -9,8 +9,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postbuild": "cp dist/index.html dist/200.html",
-    "deploy": "pnpm dlx surge ./dist"
+    "postbuild": "cp dist/index.html dist/200.html"
   },
   "dependencies": {
     "react": "^19.1.1",
