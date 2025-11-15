@@ -34,7 +34,7 @@ export function Addons() {
               <div className="overflow-hidden rounded-2xl shadow-lg">
                 <img src={ceramicCoatingPhoto.url} alt={ceramicCoatingPhoto.alt} className="h-full w-full object-cover" />
               </div>
-              <ImagePlaceholder label="Czujniki parkowania — integracja z kamerą" />
+              <ImagePlaceholder label="Czujniki parkowania przód — profesjonalna integracja ASO" />
             </div>
           </div>
         </div>
