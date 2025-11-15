@@ -11,10 +11,10 @@ export function OwnerStory() {
           <h2 className="text-center text-3xl font-black tracking-tight md:text-4xl">{ownerStory.headline}</h2>
 
           <div className="mt-10 rounded-2xl bg-white p-8 shadow-xl md:p-12">
-            <div className="relative">
-              <div className="absolute -left-2 top-0 text-6xl text-[--color-tokyo-red]/20">"</div>
-              <p className="relative text-lg leading-relaxed text-neutral-700 md:text-xl">{ownerStory.story}</p>
-              <div className="absolute -bottom-4 -right-2 text-6xl text-[--color-tokyo-red]/20">"</div>
+            <div className="relative pl-8 pr-8">
+              <div className="absolute left-0 top-0 text-6xl leading-none text-[--color-tokyo-red]/20">"</div>
+              <p className="text-lg leading-relaxed text-neutral-700 md:text-xl">{ownerStory.story}</p>
+              <div className="absolute -bottom-2 right-0 text-6xl leading-none text-[--color-tokyo-red]/20">"</div>
             </div>
 
             <div className="mt-10 border-t border-neutral-200 pt-8">
