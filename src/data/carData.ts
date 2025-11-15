@@ -54,6 +54,7 @@ export const carData: CarData = {
     'Dwa komplety kół: letnie 17" Premiere Edition + zimowe 17" alufelgi (gotowe zestawy)',
     'Oryginalny bagażnik dachowy Toyota — zakup i montaż udokumentowany w ASO (3.01.2022)',
     'Czujniki parkowania przód — profesjonalna integracja ASO z kamerą',
+    'Dwa komplety dywaników: gumowe + filcowe (oryginalne z salonu Toyota)',
   ],
   serviceHistory: [
     { date: '2020-12-21', title: 'Dostawa pojazdu' },
