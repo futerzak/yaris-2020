@@ -1,4 +1,5 @@
 import { conditionPhotos } from '../data/photos'
+import { OptimizedImage } from './OptimizedImage'
 
 export function ConditionSection() {
   return (
@@ -14,9 +15,9 @@ export function ConditionSection() {
           <div className="mx-auto mt-6 max-w-3xl space-y-6">
             <div className="rounded-2xl bg-white p-8 shadow-lg">
               <p className="text-lg leading-relaxed text-neutral-700">
-                <strong>Samochody bez rysek są podejrzane.</strong> Ten egzemplarz ma drobne rysy eksploatacyjne{' '}
-                <strong>wyłącznie na plastikowych elementach</strong> (zderzaki, listwy). Lakier nadwozia chroniony
-                powłoką ceramiczną jest w doskonałym stanie.
+                <strong>Samochody bez rysek są podejrzane.</strong> Ten egzemplarz ma drobne ślady eksploatacji — głównie
+                na plastikowych elementach (zderzaki, listwy), plus kilka powierzchownych rys na lakierze zderzaków.
+                Główne panele nadwozia chronione powłoką ceramiczną są w doskonałym stanie.
               </p>
               <p className="mt-4 text-neutral-600">
                 Poniżej zdjęcia pokazują rzeczywisty stan — żadnych niespodzianek przy oględzinach.
@@ -25,7 +26,10 @@ export function ConditionSection() {
 
             <div className="rounded-2xl border-2 border-blue-200 bg-blue-50 p-8 shadow-lg">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-blue-600 text-xl text-white">
+                <div
+                  className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-blue-600 text-xl text-white"
+                  aria-hidden="true"
+                >
                   ℹ️
                 </div>
                 <div>
@@ -34,27 +38,26 @@ export function ConditionSection() {
                     <strong>4 grudnia 2021:</strong> Incydent parkingowy — wgniecenie i obtarcie lewych tylnych drzwi.
                   </p>
                   <p className="mt-2 text-blue-800">
-                    <strong>Styczeń/Luty 2022 — Naprawa w ASO Toyota:</strong> Wymiana drzwi na nowe oryginalne + profesjonalne nałożenie
-                    powłoki ceramicznej na nowy element (zgodnie z resztą nadwozia).
+                    <strong>Styczeń/Luty 2022 — Naprawa w ASO Toyota:</strong> Wymiana drzwi na nowe oryginalne +
+                    profesjonalne nałożenie powłoki ceramicznej na nowy element (zgodnie z resztą nadwozia).
                   </p>
                   <p className="mt-3 text-sm text-blue-700">
                     ✓ Pełna dokumentacja naprawy dostępna do wglądu
                     <br />
                     ✓ Części oryginalne Toyota
-                    <br />
-                    ✓ Ceramika aplikowana przez tego samego specjalistę
+                    <br />✓ Ceramika aplikowana przez tego samego specjalistę
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {conditionPhotos.map((p, idx) => (
-              <div key={idx} className="overflow-hidden rounded-2xl shadow-lg">
-                <img src={p.url} alt={p.alt} className="h-full w-full object-cover" />
-                <div className="bg-white p-4 text-sm text-neutral-600">{p.alt}</div>
-              </div>
+              <figure key={idx} className="overflow-hidden rounded-2xl shadow-lg">
+                <OptimizedImage src={p.url} alt={p.alt} className="aspect-[4/3] w-full object-cover" />
+                <figcaption className="bg-white p-4 text-sm text-neutral-600">{p.alt}</figcaption>
+              </figure>
             ))}
           </div>
 
@@ -66,9 +69,9 @@ export function ConditionSection() {
               <div>
                 <div className="font-bold text-neutral-900">Dlaczego pokazujemy defekty?</div>
                 <p className="mt-2 text-neutral-700">
-                  Uczciwość buduje zaufanie. Każdy używany samochód ma ślady eksploatacji. Ważne, że te rysy są
-                  powierzchowne, na plastikach, i nie wpływają na funkcjonalność ani wartość auta. Lakier chroniony
-                  ceramiką jest bez uszkodzeń.
+                  Uczciwość buduje zaufanie. Każdy używany samochód ma ślady eksploatacji. Ważne, że rysy są
+                  powierzchowne i nie wpływają na funkcjonalność ani bezpieczeństwo. Główne panele lakieru chronione
+                  ceramiką są bez uszkodzeń.
                 </p>
               </div>
             </div>
@@ -78,4 +81,3 @@ export function ConditionSection() {
     </section>
   )
 }
-

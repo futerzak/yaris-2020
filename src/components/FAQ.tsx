@@ -26,10 +26,14 @@ export function FAQ() {
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-panel-${index}`}
+                  id={`faq-button-${index}`}
                   className="flex w-full items-center justify-between p-6 text-left transition-colors hover:bg-neutral-50"
                 >
                   <span className="pr-4 font-bold text-neutral-900">{item.question}</span>
                   <span
+                    aria-hidden="true"
                     className={`flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red]/10 text-[--color-tokyo-red] transition-transform ${
                       openIndex === index ? 'rotate-180' : ''
                     }`}
@@ -38,7 +42,12 @@ export function FAQ() {
                   </span>
                 </button>
                 {openIndex === index && (
-                  <div className="border-t border-neutral-200 bg-neutral-50 p-6">
+                  <div
+                    id={`faq-panel-${index}`}
+                    role="region"
+                    aria-labelledby={`faq-button-${index}`}
+                    className="border-t border-neutral-200 bg-neutral-50 p-6"
+                  >
                     <p className="leading-relaxed text-neutral-700">{item.answer}</p>
                   </div>
                 )}
@@ -48,13 +57,14 @@ export function FAQ() {
 
           <div className="mt-10 rounded-2xl bg-gradient-to-r from-[--color-tokyo-red]/5 to-neutral-100 p-6">
             <div className="flex items-start gap-4">
-              <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red] text-xl text-white">
+              <div aria-hidden="true" className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red] text-xl text-white">
                 💬
               </div>
               <div>
                 <div className="font-bold text-neutral-900">Masz inne pytania?</div>
                 <p className="mt-2 text-neutral-700">
-                  Zadzwoń lub napisz — chętnie odpowiemy na wszystkie wątpliwości. Nie ukrywamy nic, bo nie mamy czego.
+                  Zadzwoń, napisz na WhatsApp — chętnie odpowiemy na wszystkie wątpliwości. Nie ukrywamy nic, bo nie
+                  mamy czego.
                 </p>
               </div>
             </div>

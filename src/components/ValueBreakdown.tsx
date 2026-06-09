@@ -13,23 +13,23 @@ export function ValueBreakdown() {
             Wartość Dodana
           </div>
           <h2 className="text-center text-3xl font-black tracking-tight md:text-4xl">
-            Co Tracisz, Czego Nie Kupując
+            Co Tracisz, Nie Kupując Tego Auta
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-neutral-700">
             To nie tylko samochód — to kompletny pakiet, który oszczędza Ci tysiące złotych.
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {valueAddedItems.map((item, index) => (
+            {valueAddedItems.map((item) => (
               <div
-                key={index}
+                key={item.item}
                 className="flex items-start gap-4 rounded-2xl bg-white p-6 shadow-lg transition-transform hover:-translate-y-1"
               >
-                <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red]/10 text-2xl">
-                  {index === 0 && '💎'}
-                  {index === 1 && '🛞'}
-                  {index === 2 && '📦'}
-                  {index === 3 && '📋'}
+                <div
+                  aria-hidden="true"
+                  className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red]/10 text-2xl"
+                >
+                  {item.icon}
                 </div>
                 <div className="flex-1">
                   <div className="font-bold text-neutral-900">{item.item}</div>

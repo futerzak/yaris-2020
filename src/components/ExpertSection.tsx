@@ -1,5 +1,6 @@
 import { carData } from '../data/carData'
-import { expertSidePhoto } from '../data/photos'
+import { expertSidePhoto, hybridClusterPhoto } from '../data/photos'
+import { OptimizedImage } from './OptimizedImage'
 
 export function ExpertSection() {
   return (
@@ -11,7 +12,7 @@ export function ExpertSection() {
               Technologia Hybrid
             </div>
             <h2 className="text-3xl font-black tracking-tight md:text-4xl">
-              ⚡ Samochód Roku w Trybie Ultra-Premium
+              ⚡ Europejski Samochód Roku 2021 — Premiere Edition
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
               Hybrydowy napęd <strong>116 KM (e-CVT)</strong> łączy dynamikę z oszczędnością. Program gwarancyjny
@@ -21,9 +22,7 @@ export function ExpertSection() {
             <div className="mt-8 rounded-2xl bg-neutral-50 p-6">
               <div className="mb-4 flex items-center gap-2">
                 <div className="h-1 w-12 bg-[--color-tokyo-red]" />
-                <div className="text-sm font-bold uppercase tracking-wide text-neutral-600">
-                  Toyota Safety Sense
-                </div>
+                <div className="text-sm font-bold uppercase tracking-wide text-neutral-600">Toyota Safety Sense</div>
               </div>
               <ul className="grid gap-3 text-neutral-800">
                 {carData.tssSystems.map((s) => (
@@ -35,12 +34,20 @@ export function ExpertSection() {
               </ul>
             </div>
           </div>
-          <div className="relative">
-            <img
+          <div className="grid gap-4">
+            <OptimizedImage
               src={expertSidePhoto.url}
               alt={expertSidePhoto.alt}
-              className="rounded-2xl shadow-2xl"
+              className="aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl"
             />
+            <figure className="overflow-hidden rounded-2xl shadow-lg">
+              <OptimizedImage
+                src={hybridClusterPhoto.url}
+                alt={hybridClusterPhoto.alt}
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="bg-neutral-50 px-4 py-3 text-sm text-neutral-600">{hybridClusterPhoto.alt}</figcaption>
+            </figure>
           </div>
         </div>
       </div>

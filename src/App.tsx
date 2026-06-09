@@ -12,6 +12,7 @@ import { WhyWorth } from './components/WhyWorth'
 import { ConditionSection } from './components/ConditionSection'
 import { FAQ } from './components/FAQ'
 import { CTA } from './components/CTA'
+import { StickyBar } from './components/StickyBar'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <ConditionSection />
       <FAQ />
       <CTA />
+      <StickyBar />
     </div>
   )
 }
