@@ -1,5 +1,6 @@
 import { carData } from '../data/carData'
-import { interiorHero, interiorDetail } from '../data/photos'
+import { interiorDetail, interiorHero, interiorRearPhoto } from '../data/photos'
+import { OptimizedImage } from './OptimizedImage'
 
 export function InteriorSection() {
   return (
@@ -19,13 +20,31 @@ export function InteriorSection() {
             </span>
           ))}
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <div className="overflow-hidden rounded-2xl shadow-xl">
-            <img src={interiorHero.url} alt={interiorHero.alt} className="h-full w-full object-cover" />
-          </div>
-          <div className="overflow-hidden rounded-2xl shadow-xl">
-            <img src={interiorDetail.url} alt={interiorDetail.alt} className="h-full w-full object-cover" />
-          </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <figure className="overflow-hidden rounded-2xl shadow-xl md:col-span-2">
+            <OptimizedImage
+              src={interiorHero.url}
+              alt={interiorHero.alt}
+              className="aspect-[16/10] w-full object-cover"
+            />
+            <figcaption className="bg-neutral-50 px-4 py-3 text-sm text-neutral-600">{interiorHero.alt}</figcaption>
+          </figure>
+          <figure className="overflow-hidden rounded-2xl shadow-xl">
+            <OptimizedImage
+              src={interiorDetail.url}
+              alt={interiorDetail.alt}
+              className="aspect-[4/3] w-full object-cover"
+            />
+            <figcaption className="bg-neutral-50 px-4 py-3 text-sm text-neutral-600">{interiorDetail.alt}</figcaption>
+          </figure>
+          <figure className="overflow-hidden rounded-2xl shadow-xl md:col-span-3">
+            <OptimizedImage
+              src={interiorRearPhoto.url}
+              alt={interiorRearPhoto.alt}
+              className="aspect-[21/9] w-full object-cover"
+            />
+            <figcaption className="bg-neutral-50 px-4 py-3 text-sm text-neutral-600">{interiorRearPhoto.alt}</figcaption>
+          </figure>
         </div>
       </div>
     </section>

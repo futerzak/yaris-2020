@@ -2,15 +2,17 @@ import { carData } from '../data/carData'
 import { heroPhoto } from '../data/photos'
 import { ContactButtons } from './ContactButtons'
 import { KeyFacts } from './KeyFacts'
+import { OptimizedImage } from './OptimizedImage'
 
 export function Hero() {
   return (
     <header className="relative min-h-[85vh] overflow-hidden bg-brand-hero">
       <div className="absolute inset-0">
-        <img
+        <OptimizedImage
           src={heroPhoto.url}
           alt={heroPhoto.alt}
           className="h-full w-full object-cover object-center"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40" />
       </div>

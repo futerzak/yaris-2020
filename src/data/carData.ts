@@ -60,7 +60,7 @@ export const carData: CarData = {
     'Head-Up Display (HUD) — projekcja informacji na przedniej szybie',
   ],
   addons: [
-    'Powłoka ceramiczna z 9-letnią gwarancją (ok. 4 lata gwarancji pozostałe)',
+    'Powłoka ceramiczna Gtechniq Crystal Serum Ultra — 9-letnia gwarancja (ok. 4 lata gwarancji pozostałe)',
     'Dwa komplety kół: letnie 17" Premiere Edition + zimowe 17" alufelgi (gotowe zestawy)',
     'Oryginalny bagażnik dachowy Toyota — zakup i montaż udokumentowany w ASO (3.01.2022)',
     'Czujniki parkowania przód — profesjonalna integracja ASO',
@@ -128,7 +128,7 @@ export const ownerStory = {
 
 // Value breakdown
 export const valueAddedItems = [
-  { item: 'Powłoka ceramiczna z 9-letnią gwarancją (ok. 4 lata gwarancji pozostałe)', value: 2000 },
+  { item: 'Powłoka ceramiczna Gtechniq Crystal Serum Ultra (ok. 4 lata gwarancji pozostałe)', value: 2000 },
   { item: 'Drugi komplet kół na alufelgach 17"', value: 3000 },
   { item: 'Oryginalny bagażnik dachowy Toyota', value: 1500 },
   { item: 'Pełna historia serwisowa ASO', value: 'bezcenne' as const },
@@ -142,7 +142,7 @@ export const faqItems = [
   },
   {
     question: 'Czy były wypadki lub uszkodzenia?',
-    answer: 'Był jeden incydent parkingowy (4.12.2021) — wgniecenie i obtarcie lewych tylnych drzwi. Naprawa wykonana w ASO Toyota: wymiana drzwi na nowe oryginalne + profesjonalne nałożenie ceramiki na nowy element. Pełna dokumentacja naprawy. Poza tym wszystkie drobne rysy eksploatacyjne (wyłącznie na plastikach) pokazujemy transparentnie w sekcji stanu technicznego.',
+    answer: 'Był jeden incydent parkingowy (4.12.2021) — wgniecenie i obtarcie lewych tylnych drzwi. Naprawa wykonana w ASO Toyota: wymiana drzwi na nowe oryginalne + profesjonalne nałożenie ceramiki na nowy element. Pełna dokumentacja naprawy. Poza tym drobne rysy eksploatacyjne na plastikach i powierzchowne rysy na lakierze zderzaków — pokazujemy je transparentnie w sekcji stanu technicznego.',
   },
   {
     question: 'Czy auto jest finansowane lub obciążone?',

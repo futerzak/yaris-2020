@@ -1,5 +1,6 @@
 import { wheelSets } from '../data/carData'
-import { wheelsPhotos } from '../data/photos'
+import { tiresInTrunkPhoto, wheelsPhotos } from '../data/photos'
+import { OptimizedImage } from './OptimizedImage'
 
 export function WheelsSection() {
   return (
@@ -24,7 +25,7 @@ export function WheelsSection() {
                 className="overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-50 to-white shadow-xl"
               >
                 <div className="aspect-square overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={wheelsPhotos[index].url}
                     alt={wheelsPhotos[index].alt}
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
@@ -56,9 +57,21 @@ export function WheelsSection() {
             ))}
           </div>
 
+          <figure className="mt-10 overflow-hidden rounded-2xl shadow-lg">
+            <OptimizedImage
+              src={tiresInTrunkPhoto.url}
+              alt={tiresInTrunkPhoto.alt}
+              className="aspect-[21/9] w-full object-cover"
+            />
+            <figcaption className="bg-neutral-50 px-4 py-3 text-sm text-neutral-600">{tiresInTrunkPhoto.alt}</figcaption>
+          </figure>
+
           <div className="mt-10 rounded-2xl bg-gradient-to-r from-[--color-tokyo-red]/5 to-blue-50 p-6">
             <div className="flex items-start gap-4">
-              <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red] text-xl text-white">
+              <div
+                className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red] text-xl text-white"
+                aria-hidden="true"
+              >
                 ✓
               </div>
               <div>

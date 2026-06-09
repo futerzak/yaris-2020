@@ -1,5 +1,6 @@
 import { carData } from '../data/carData'
 import { serviceSidePhoto } from '../data/photos'
+import { OptimizedImage } from './OptimizedImage'
 
 export function ServiceHistory() {
   return (
@@ -60,10 +61,10 @@ export function ServiceHistory() {
 
           </div>
           <div className="sticky top-8">
-            <img
+            <OptimizedImage
               src={serviceSidePhoto.url}
               alt={serviceSidePhoto.alt}
-              className="rounded-2xl shadow-2xl"
+              className="aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl"
             />
           </div>
         </div>
