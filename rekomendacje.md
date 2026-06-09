@@ -2,17 +2,17 @@
 
 > **Skonsolidowany backlog** (zastępuje `rekomendacje-composer.md` + `REVIEW.md`).
 > Stan: 2026-06-09 · projekt: `yaris-2020` (Vite + React 19 + Tailwind v4) · URL: https://futerzak.github.io/yaris-2020/
-> **Branch:** `feature/gallery-and-trust-photos` · ostatni commit `014cb49` · **working tree czysty (wszystko zcommitowane)**
+> **Branch:** `feature/gallery-and-trust-photos` · ostatni commit `8698df4` · **PR [#2](https://github.com/futerzak/yaris-2020/pull/2)** (→ `main`) · working tree czysty
 >
 > Powstał z połączenia rekomendacji UX/treściowych (Composer) i review technicznego (wydajność obrazów, a11y, SEO, martwy kod), zdeduplikowany i ujednolicony w skali **P0 / P1 / P2**. Konflikty rozstrzygnięte w sekcji [Rozstrzygnięcia](#rozstrzygnięcia-konfliktów).
 >
-> **Aktualizacja 2026-06-09 (po 2 commitach):** statusy poniżej zweryfikowane bezpośrednio w kodzie (✅ zrobione · 🟡 częściowo · ❌ nie zrobione).
+> **Aktualizacja 2026-06-09 (FINAL):** wszystko zaimplementowane, zacommitowane (`8698df4`), wypchnięte i otwarty PR #2; zweryfikowane na żywo w przeglądarce (mobile). Statusy: ✅ zrobione · 🟡 częściowo (czeka na dane właściciela) · ❌ nie zrobione (dane właściciela).
 
 ---
 
 ## 📍 Stan wdrożenia (zweryfikowany w kodzie)
 
-> **Aktualizacja 2026-06-09 — runda implementacji** (lint ✅ + build ✅): wdrożono większość P0/P1 poza kompresją zdjęć. Zmiany niezcommitowane (working tree).
+> **Aktualizacja 2026-06-09 — runda FINAL** (lint ✅ · build ✅ · live ✅): całe P0 + P1 techniczne wdrożone i **zacommitowane (`8698df4`) + PR [#2](https://github.com/futerzak/yaris-2020/pull/2)**. Weryfikacja na żywo: hero/galeria ostre po kompresji, lazy-loading + `<picture>`/WebP (17/32) + sticky bar działają, 0 błędów konsoli.
 
 | Pozycja | Status | Uwaga |
 |---|---|---|
@@ -31,7 +31,17 @@
 | P2 Licznik zdjęć w galerii | ✅ | `{designPhotos.length} zdjęć` w `Gallery.tsx` (był już wcześniej — wcześniejsza notka „brak" była błędna) |
 | P2 Dynamiczny rok w stopce | ✅ | `{new Date().getFullYear()}` w CTA |
 
-**Werdykt aktualny:** całe P0 + P1 techniczne zrobione, build przechodzi, strona lekka (referencje ~4,6 MB WebP zamiast 63 MB). **Gotowa do wysyłania linku.** Do uzupełnienia tylko dane od właściciela: bieżnik opon, VIN, faktury ASO, spalanie, gwarancja baterii.
+**Werdykt aktualny:** ✅ **ZAKOŃCZONE** — całe P0 + P1 techniczne zrobione, zacommitowane, w PR #2, zweryfikowane na żywo. Strona lekka (~4,6 MB WebP zamiast 63 MB) i **gotowa do wysyłania linku**.
+
+**Pozostaje wyłącznie poza kodem (dane/materiały od właściciela):**
+- [ ] Głębokość bieżnika opon (pomiar) — `carData.ts` `wheelSets` + FAQ
+- [ ] 6 ostatnich znaków VIN
+- [ ] Zdjęcia książki serwisowej / faktur ASO
+- [ ] Realne spalanie + data końca gwarancji baterii hybrydowej
+
+**Drobiazgi wykryte przy weryfikacji (pre-existing, opcjonalne):**
+- [ ] Zdjęcie hero: widoczny nr tel. na ramce tablicy + tablica „KR 7TP10" — rozważyć retusz (prywatność)
+- [ ] `photos.ts`: błędny alt „…z widoczną głębokością **bieżnika**" przy zdjęciu rysy na lakierze (copy-bug)
 
 ---
 
