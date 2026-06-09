@@ -16,8 +16,8 @@
 
 | Pozycja | Status | Uwaga |
 |---|---|---|
-| P0 #1 Optymalizacja zdjęć | ❌ | **JEDYNY pozostały P0.** `public/Yaris/` nadal **336 MB / 102 pliki, 0 WebP**; wymaga `sharp` (brak w env). Galeria = 28 zdjęć → payload wzrósł |
-| P0 #2 Lazy loading | 🟡→✅* | `OptimizedImage` (9 sekcji) + **preload hero w `<head>`** (✅ teraz). Pozostaje `width/height`/`aspect-ratio` (CLS) |
+| P0 #1 Optymalizacja zdjęć | ✅ | `sharp` + `scripts/optimize-images.mjs`: `public/Yaris` **336 MB → 10 MB**, usunięto 73 nieużywane; 29 obrazów przeskalowanych (≤1920/1400 px) + **WebP** (`<picture>`); referencje **83 MB → ~4,6 MB WebP**; preload hero → WebP |
+| P0 #2 Lazy loading + CLS | ✅ | `OptimizedImage` (lazy + `decoding=async`) w 9 sekcjach; preload hero (WebP) w `<head>`; **CLS** ograniczony klasami `aspect-*` na każdym obrazie (hero = absolutne tło) |
 | P0 #3 Martwy kod | ✅ | Usunięto `index.css`, `App.css`, `ImagePlaceholder.tsx`, `vite.svg`, `react.svg` |
 | P0 #4 Marka/bieżnik opon | 🟡 | ✅ **Bridgestone Ecopia EP150** wpisane (`wheelSets` + FAQ). ❌ bieżnik (pomiar po stronie właściciela) |
 | P1 #5 Dowody zaufania | 🟡 | Cert Gtechniq + dokumenty z salonu. ❌ książka serwisowa/faktury ASO, 6 znaków VIN (materiały od właściciela) |
@@ -31,7 +31,7 @@
 | P2 Licznik zdjęć w galerii | ✅ | `{designPhotos.length} zdjęć` w `Gallery.tsx` (był już wcześniej — wcześniejsza notka „brak" była błędna) |
 | P2 Dynamiczny rok w stopce | ✅ | `{new Date().getFullYear()}` w CTA |
 
-**Werdykt aktualny:** P1 (SEO, a11y) + większość P0 zrobione i build przechodzi. **Zostaje jedyny krytyczny blocker: kompresja zdjęć (P0 #1)** — wymaga instalacji `sharp`. Do wpisania jeszcze (dane od właściciela): bieżnik opon, VIN, faktury ASO, spalanie, gwarancja baterii.
+**Werdykt aktualny:** całe P0 + P1 techniczne zrobione, build przechodzi, strona lekka (referencje ~4,6 MB WebP zamiast 63 MB). **Gotowa do wysyłania linku.** Do uzupełnienia tylko dane od właściciela: bieżnik opon, VIN, faktury ASO, spalanie, gwarancja baterii.
 
 ---
 
@@ -102,12 +102,12 @@ Legenda priorytetów:
 
 **Cel: ~63 MB → ~2-4 MB.** Pliki: `public/Yaris/`, `src/data/photos.ts`.
 
-### 2. Lazy loading + wymiary obrazów — 🟡 częściowo
-- [x] ✅ `loading="lazy"` + `decoding="async"` — **zrobione** przez `OptimizedImage` w 9 sekcjach (commit `014cb49`)
-- [x] ✅ Hero `fetchPriority="high"` + `loading="eager"` — **zrobione**
-- [ ] Preload hero w `<head>` — **brak**
-- [ ] `width`/`height` lub stały `aspect-ratio` (CLS) — **brak**, szczególnie `ExpertSection.tsx`, `ServiceHistory.tsx`
-- [ ] Lightbox nadal surowe `<img>` (do przyjęcia — ładowane na żądanie)
+### 2. Lazy loading + wymiary obrazów — ✅ zrobione
+- [x] ✅ `loading="lazy"` + `decoding="async"` przez `OptimizedImage` w 9 sekcjach
+- [x] ✅ Hero `fetchPriority="high"` + `loading="eager"`
+- [x] ✅ Preload hero w `<head>` (WebP + `type="image/webp"`)
+- [x] ✅ CLS — `aspect-*` na każdym obrazie (Gallery/Condition/Owner/Interior/Expert/Service/Addons; Wheels w `aspect-square`; hero = absolutne tło). Jawne `width/height` zbędne przy `object-cover`
+- [ ] Lightbox nadal surowe `<img>` (do przyjęcia — ładowane na żądanie po kliknięciu)
 
 ### 3. Usunięcie martwego kodu (boilerplate Vite)
 - [ ] `src/index.css` i `src/App.css` — resztki startera (ciemne tło `#242424`, spinning logo, `#root max-width`), **nie importowane** (`main.tsx` ładuje tylko `styles/tailwind.css`) — mylące, usunąć
