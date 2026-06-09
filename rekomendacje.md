@@ -2,8 +2,36 @@
 
 > **Skonsolidowany backlog** (zastępuje `rekomendacje-composer.md` + `REVIEW.md`).
 > Stan: 2026-06-09 · projekt: `yaris-2020` (Vite + React 19 + Tailwind v4) · URL: https://futerzak.github.io/yaris-2020/
+> **Branch:** `feature/gallery-and-trust-photos` · ostatni commit `014cb49` · **working tree czysty (wszystko zcommitowane)**
 >
 > Powstał z połączenia rekomendacji UX/treściowych (Composer) i review technicznego (wydajność obrazów, a11y, SEO, martwy kod), zdeduplikowany i ujednolicony w skali **P0 / P1 / P2**. Konflikty rozstrzygnięte w sekcji [Rozstrzygnięcia](#rozstrzygnięcia-konfliktów).
+>
+> **Aktualizacja 2026-06-09 (po 2 commitach):** statusy poniżej zweryfikowane bezpośrednio w kodzie (✅ zrobione · 🟡 częściowo · ❌ nie zrobione).
+
+---
+
+## 📍 Stan wdrożenia (zweryfikowany w kodzie)
+
+> **Aktualizacja 2026-06-09 — runda implementacji** (lint ✅ + build ✅): wdrożono większość P0/P1 poza kompresją zdjęć. Zmiany niezcommitowane (working tree).
+
+| Pozycja | Status | Uwaga |
+|---|---|---|
+| P0 #1 Optymalizacja zdjęć | ❌ | **JEDYNY pozostały P0.** `public/Yaris/` nadal **336 MB / 102 pliki, 0 WebP**; wymaga `sharp` (brak w env). Galeria = 28 zdjęć → payload wzrósł |
+| P0 #2 Lazy loading | 🟡→✅* | `OptimizedImage` (9 sekcji) + **preload hero w `<head>`** (✅ teraz). Pozostaje `width/height`/`aspect-ratio` (CLS) |
+| P0 #3 Martwy kod | ✅ | Usunięto `index.css`, `App.css`, `ImagePlaceholder.tsx`, `vite.svg`, `react.svg` |
+| P0 #4 Marka/bieżnik opon | 🟡 | ✅ **Bridgestone Ecopia EP150** wpisane (`wheelSets` + FAQ). ❌ bieżnik (pomiar po stronie właściciela) |
+| P1 #5 Dowody zaufania | 🟡 | Cert Gtechniq + dokumenty z salonu. ❌ książka serwisowa/faktury ASO, 6 znaków VIN (materiały od właściciela) |
+| P1 #6 SEO | ✅ | **JSON-LD `Car`+`Offer`**, `canonical`, własny **favicon.svg**, `theme-color` |
+| P1 #7 a11y emoji | ✅ | `aria-hidden` we wszystkich sekcjach (dodano TrustBadges, WhyWorth, ValueBreakdown, CTA, FAQ) |
+| P1 #7 FAQ + Lightbox a11y | ✅ | FAQ `aria-expanded`/`aria-controls`/`role=region`; Lightbox `role=dialog`+`aria-modal`+focus-trap+**prev/next + strzałki**+blokada scrolla |
+| P1 #8 Addons `<h2>` | ✅ | Zrobione wcześniej (commit `014cb49`) |
+| P1 #8 `prefers-reduced-motion` | ✅ | Guard w `tailwind.css` (animacje hero + scroll-behavior) |
+| P1 #9 Breakdown wartości | ✅ | Dodano czujniki (~1000) + dywaniki (~400) z ikonami → suma ~**7900 PLN** |
+| P1 #10 Spalanie + gwarancja baterii | ❌ | Dane od właściciela |
+| P2 Licznik zdjęć w galerii | ✅ | `{designPhotos.length} zdjęć` w `Gallery.tsx` (był już wcześniej — wcześniejsza notka „brak" była błędna) |
+| P2 Dynamiczny rok w stopce | ✅ | `{new Date().getFullYear()}` w CTA |
+
+**Werdykt aktualny:** P1 (SEO, a11y) + większość P0 zrobione i build przechodzi. **Zostaje jedyny krytyczny blocker: kompresja zdjęć (P0 #1)** — wymaga instalacji `sharp`. Do wpisania jeszcze (dane od właściciela): bieżnik opon, VIN, faktury ASO, spalanie, gwarancja baterii.
 
 ---
 
@@ -42,6 +70,18 @@ Legenda priorytetów:
 - Osobna ramka „Opony" w sekcji kół
 - FAQ: jazda próbna, jakie opony, kiedy dostępne
 
+### Wdrożone w 2 commitach (branch `feature/gallery-and-trust-photos`, 2026-06-09)
+- **Galeria rozszerzona** 9 → ~12 widocznych zdjęć (tył, kokpit, kanapa, bagażnik, wyposażenie); `photos.ts` referuje 28 plików
+- **Dowody zaufania (zdjęcia):** dokumenty z salonu Toyota Romanowski (OwnerStory), certyfikat Gtechniq #311057 (Addons), zegary hybrydy (ExpertSection), nowy kokpit + kanapa (InteriorSection), +3 rysy na lakierze z uczciwym opisem (ConditionSection)
+- **Ceramika nazwana:** „Gtechniq Crystal Serum Ultra" w treści
+- **`OptimizedImage`** — lazy loading + `decoding="async"`, hero `fetchPriority="high"` (9 sekcji)
+- **`Addons.tsx`: `<h3>` → `<h2>`** (P1 #8)
+- **`aria-hidden` na emoji** w OwnerStory, ConditionSection, WheelsSection (+ StickyBar)
+- OG image → lżejsze zdjęcie (`FB_IMG_…`, ~70 KB) zamiast 4 MB+
+- WheelsSection: zimówki bez pliku 14 MB w referencjach
+
+> ⚠️ Composer raportował część z tych zmian jako „niezcommitowane" — w rzeczywistości **working tree jest czysty, wszystko jest w commicie `014cb49`**. Composer twierdził też, że galeria ma licznik „X zdjęć" — **w `Gallery.tsx` go nie ma** (do zrobienia, P2 #15).
+
 ---
 
 ## 🚫 Świadomie pominięte
@@ -62,10 +102,12 @@ Legenda priorytetów:
 
 **Cel: ~63 MB → ~2-4 MB.** Pliki: `public/Yaris/`, `src/data/photos.ts`.
 
-### 2. Lazy loading + wymiary obrazów
-- [ ] `loading="lazy"` + `decoding="async"` na **wszystkich** `<img>` poza hero (Gallery, Interior, Wheels, Service, Addons, Condition) — obecnie **0 obrazów** ma lazy-loading
-- [ ] Hero: `loading="eager"` + `fetchpriority="high"` + preload w `<head>` (to LCP)
-- [ ] `width`/`height` lub stały `aspect-ratio` (CLS) — szczególnie `ExpertSection.tsx`, `ServiceHistory.tsx` (obraz boczny bez ograniczenia proporcji)
+### 2. Lazy loading + wymiary obrazów — 🟡 częściowo
+- [x] ✅ `loading="lazy"` + `decoding="async"` — **zrobione** przez `OptimizedImage` w 9 sekcjach (commit `014cb49`)
+- [x] ✅ Hero `fetchPriority="high"` + `loading="eager"` — **zrobione**
+- [ ] Preload hero w `<head>` — **brak**
+- [ ] `width`/`height` lub stały `aspect-ratio` (CLS) — **brak**, szczególnie `ExpertSection.tsx`, `ServiceHistory.tsx`
+- [ ] Lightbox nadal surowe `<img>` (do przyjęcia — ładowane na żądanie)
 
 ### 3. Usunięcie martwego kodu (boilerplate Vite)
 - [ ] `src/index.css` i `src/App.css` — resztki startera (ciemne tło `#242424`, spinning logo, `#root max-width`), **nie importowane** (`main.tsx` ładuje tylko `styles/tailwind.css`) — mylące, usunąć
@@ -74,7 +116,7 @@ Legenda priorytetów:
 ### 4. Bieżnik + marka opon letnich (quick win, ~15-40 min)
 Najczęstsze pytanie kupującego — brak tej danej wymusza telefon zamiast decyzji o wizycie.
 
-- [x] **Marka opon letnich: Bridgestone Ecopia EP150** _(ustalone 2026-06-09)_ → wpisać do `wheelSets`
+- [ ] **Marka opon letnich: Bridgestone Ecopia EP150** _(ustalone 2026-06-09, ale ⚠️ NADAL NIE w kodzie — `carData.ts` linie 100 i 169 mają „oryginalne z dostawy salonowej")_ → wpisać do `wheelSets` + FAQ
 - [ ] Zmierzyć i wpisać głębokość bieżnika: letnie + zimowe (np. „letnie ~5 mm, zimowe ~6 mm")
 - [ ] Opcjonalnie: rok produkcji opon (z boku opony)
 
@@ -84,10 +126,10 @@ Plik: `src/data/carData.ts` → `wheelSets`, FAQ.
 
 ## 🟡 P1 — Przed publiczną publikacją
 
-### 5. Dowody zaufania (zdjęcia + VIN) — rekompensata za brak OLX/Otomoto
-- [ ] Zdjęcia książki serwisowej / faktur ASO (z zamazanymi danymi osobowymi)
-- [ ] Certyfikat / dokumentacja powłoki ceramicznej (produkt, data, pozostała gwarancja)
-- [ ] **Ostatnie 6 znaków VIN** (nie pełny — prywatność) — buduje wiarygodność u poważnych kupujących
+### 5. Dowody zaufania (zdjęcia + VIN) — 🟡 częściowo
+- [x] ✅ Certyfikat / dokumentacja powłoki ceramicznej — **zrobione** (Gtechniq #311057 w Addons) + dokumenty z salonu (OwnerStory)
+- [ ] Zdjęcia książki serwisowej / faktur ASO (z zamazanymi danymi osobowymi) — **brak**
+- [ ] **Ostatnie 6 znaków VIN** (nie pełny — prywatność) — **brak**
 
 Gdzie: nowa sekcja `DocumentsSection.tsx` lub rozszerzenie `TrustBadges` / `ServiceHistory`.
 
@@ -99,16 +141,16 @@ Gdzie: nowa sekcja `DocumentsSection.tsx` lub rozszerzenie `TrustBadges` / `Serv
 Gdzie: `index.html`, `public/`.
 
 ### 7. Dostępność (a11y)
-- [ ] **Emoji jako ikony** (TrustBadges, OwnerStory, WhyWorth, ValueBreakdown, CTA, FAQ) → owinąć w `aria-hidden="true"` (czytniki ekranu czytają „emoji rodzina")
+- [ ] 🟡 **Emoji jako ikony** → `aria-hidden="true"`. ✅ zrobione: OwnerStory, ConditionSection, WheelsSection, StickyBar. ❌ brak: **TrustBadges, WhyWorth, ValueBreakdown, CTA, FAQ**
 - [ ] **FAQ accordion**: dodać `aria-expanded` + `aria-controls`; strzałka ▼ → `aria-hidden`
 - [ ] **Lightbox**: `role="dialog"` + `aria-modal`, focus-trap, przywracanie focusu, **nawigacja prev/next + strzałkami** (dziś pokazuje 1 zdjęcie bez przeklikiwania)
 
 ### 8. Animacje + spójność semantyczna
 - [ ] `prefers-reduced-motion` — wyłączyć `animate-fade-in` / `animate-slide-up` w hero
-- [ ] `Addons.tsx`: `<h3>` → `<h2>` (pozostałe sekcje mają `<h2>`; hierarchia: jeden `<h1>` w hero)
+- [x] ✅ `Addons.tsx`: `<h3>` → `<h2>` — **zrobione** (commit `014cb49`)
 
-### 9. Wartość dodatków — pełniejszy breakdown
-Obecnie suma ~6500 PLN, bez czujników i dywaników.
+### 9. Wartość dodatków — pełniejszy breakdown ❌
+Obecnie nadal 4 pozycje, suma ~6500 PLN, bez czujników i dywaników (zmieniono tylko nazwę ceramiki na „Gtechniq Crystal Serum Ultra").
 
 - [ ] Dodać do `valueAddedItems`: czujniki ASO (~800-1200 PLN), dywaniki (~300-500 PLN)
 - [ ] Zaktualizować łączną sumę (realnie ~8000-9000 PLN)
@@ -180,15 +222,15 @@ Gdzie: `ContactButtons.tsx`, `CTA.tsx`, `StickyBar.tsx`.
 
 ## 🎯 Sugerowana kolejność (quick wins)
 
-**Faza A (~2-4 h) — przed wysłaniem linku:**
-1. Optymalizacja zdjęć: usuń 87 nieużywanych z `public/Yaris/` + `dist/Yaris/`, skala + WebP na 15 używanych (P0 #1)
-2. Lazy loading poza hero + `fetchpriority="high"` + width/height na hero (P0 #2)
-3. Usuń martwy kod: `index.css`, `App.css`, `vite.svg`, `react.svg`, `ImagePlaceholder.tsx` (P0 #3)
+**Faza A (~2-4 h) — przed wysłaniem linku — POZOSTAŁO:**
+1. ❌ **Optymalizacja zdjęć** (P0 #1) — `public/Yaris/` (skala + WebP, usuń nieużywane). **Najpilniejsze** — galeria urosła do 28 zdjęć, payload wzrósł.
+2. 🟡 Lazy loading (P0 #2) — zrobione; **dorobić** preload hero w `<head>` + `width/height`.
+3. ❌ Usuń martwy kod (P0 #3): `index.css`, `App.css`, `vite.svg`, `react.svg`, `ImagePlaceholder.tsx`.
 
-**Faza B (~30 min):**
-4. Wpisz markę opon (Bridgestone Ecopia EP150) + zmierzony bieżnik do `carData.ts` (P0 #4)
+**Faza B (~30 min) — POZOSTAŁO:**
+4. ❌ Wpisz markę opon (**Bridgestone Ecopia EP150**) + zmierzony bieżnik do `carData.ts` (P0 #4) — wciąż „oryginalne z dostawy salonowej".
 
-> **Po Fazie A+B link można wysyłać.**
+> **Po Fazie A+B link można wysyłać.** Treść i dowody zaufania (Faza C #5 częściowo) już są na branchu.
 
 **Faza C (przed szerszą publikacją):**
 5. Dowody zaufania: 2-3 zdjęcia dokumentów + 6 znaków VIN (P1 #5) — najsilniejszy dźwignik konwersji

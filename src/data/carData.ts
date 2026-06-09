@@ -97,8 +97,8 @@ export const wheelSets: WheelSet[] = [
     seasonColor: 'bg-[--color-tokyo-red]',
     title: '17" Premiere Edition',
     rims: 'Dwukolorowe alufelgi z oryginalnego wyposażenia Premiere Edition — sportowy design z diamentowym wykończeniem.',
-    tires: 'Oryginalne opony z dostawy salonowej Toyota — takie, jakie auto miało od pierwszego dnia.',
-    tags: ['Oryginalne', '17"', 'Dwukolorowe', 'Z salonu Toyota'],
+    tires: 'Bridgestone Ecopia EP150 — oryginalne opony z dostawy salonowej Toyota, takie jakie auto miało od pierwszego dnia.',
+    tags: ['Bridgestone Ecopia EP150', 'Oryginalne', '17"', 'Z salonu Toyota'],
   },
   {
     season: 'Zimowe',
@@ -127,11 +127,15 @@ export const ownerStory = {
 };
 
 // Value breakdown
-export const valueAddedItems = [
-  { item: 'Powłoka ceramiczna Gtechniq Crystal Serum Ultra (ok. 4 lata gwarancji pozostałe)', value: 2000 },
-  { item: 'Drugi komplet kół na alufelgach 17"', value: 3000 },
-  { item: 'Oryginalny bagażnik dachowy Toyota', value: 1500 },
-  { item: 'Pełna historia serwisowa ASO', value: 'bezcenne' as const },
+export type ValueAddedItem = { item: string; value: number | 'bezcenne'; icon: string };
+
+export const valueAddedItems: ValueAddedItem[] = [
+  { item: 'Powłoka ceramiczna Gtechniq Crystal Serum Ultra (ok. 4 lata gwarancji pozostałe)', value: 2000, icon: '💎' },
+  { item: 'Drugi komplet kół na alufelgach 17"', value: 3000, icon: '🛞' },
+  { item: 'Oryginalny bagażnik dachowy Toyota', value: 1500, icon: '📦' },
+  { item: 'Czujniki parkowania przód — montaż w ASO', value: 1000, icon: '🅿️' },
+  { item: 'Dwa komplety dywaników: gumowe + filcowe (oryginalne Toyota)', value: 400, icon: '🧰' },
+  { item: 'Pełna historia serwisowa ASO', value: 'bezcenne', icon: '📋' },
 ];
 
 // FAQ
@@ -166,7 +170,7 @@ export const faqItems = [
   },
   {
     question: 'Jakie opony są w zestawie?',
-    answer: 'Letnie to oryginalne opony z dostawy salonowej Toyota (takie, jakie auto miało od pierwszego dnia). Zimowe to Nokian — oryginalny komplet kupiony w salonie Toyota. Oba zestawy na alufelgach 17", gotowe do sezonowej wymiany.',
+    answer: 'Letnie to Bridgestone Ecopia EP150 — oryginalne opony z dostawy salonowej Toyota (takie, jakie auto miało od pierwszego dnia). Zimowe to Nokian — oryginalny komplet kupiony w salonie Toyota. Oba zestawy na alufelgach 17", gotowe do sezonowej wymiany.',
   },
   {
     question: 'Kiedy auto jest dostępne?',

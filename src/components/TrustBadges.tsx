@@ -46,7 +46,7 @@ export function TrustBadges() {
                 key={index}
                 className="flex items-start gap-4 rounded-xl bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-green-100 text-2xl">
+                <div aria-hidden="true" className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-green-100 text-2xl">
                   {badge.icon}
                 </div>
                 <div>

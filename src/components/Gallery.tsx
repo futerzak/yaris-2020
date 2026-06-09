@@ -40,6 +40,8 @@ export function Gallery() {
         onClose={() => setOpenIdx(null)}
         src={active?.url}
         alt={active?.alt ?? ''}
+        onPrev={() => setOpenIdx((i) => (i === null ? i : (i - 1 + designPhotos.length) % designPhotos.length))}
+        onNext={() => setOpenIdx((i) => (i === null ? i : (i + 1) % designPhotos.length))}
       />
     </section>
   )
