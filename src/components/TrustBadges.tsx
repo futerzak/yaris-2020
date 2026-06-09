@@ -2,7 +2,7 @@ export function TrustBadges() {
   const badges = [
     {
       icon: '🇵🇱',
-      title: 'Polska Salon',
+      title: 'Polski Salon',
       description: 'Zakup w ASO Toyota Polska, grudzień 2020',
     },
     {

@@ -13,7 +13,7 @@ export function ValueBreakdown() {
             Wartość Dodana
           </div>
           <h2 className="text-center text-3xl font-black tracking-tight md:text-4xl">
-            Co Tracisz, Czego Nie Kupując
+            Co Tracisz, Nie Kupując Tego Auta
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-neutral-700">
             To nie tylko samochód — to kompletny pakiet, który oszczędza Ci tysiące złotych.

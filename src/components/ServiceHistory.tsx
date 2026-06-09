@@ -58,29 +58,6 @@ export function ServiceHistory() {
               </table>
             </div>
 
-            <div className="mt-10">
-              <div className="mb-4 flex items-center gap-2">
-                <div className="h-1 w-12 bg-[--color-tokyo-red]" />
-                <div className="text-sm font-bold uppercase tracking-wide text-neutral-600">
-                  Lista Unikalnych Dodatków
-                </div>
-              </div>
-              <ul className="grid gap-3">
-                {carData.addons.map((a) => (
-                  <li key={a} className="flex items-start gap-3">
-                    <span
-                      className={
-                        'mt-1.5 inline-block h-2 w-2 flex-none rounded-full ' +
-                        (a.toLowerCase().includes('bagażnik') ? 'bg-[--color-tokyo-red]' : 'bg-neutral-400')
-                      }
-                    />
-                    <span className={a.toLowerCase().includes('bagażnik') ? 'font-bold text-[--color-tokyo-red]' : ''}>
-                      {a}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
           <div className="sticky top-8">
             <img

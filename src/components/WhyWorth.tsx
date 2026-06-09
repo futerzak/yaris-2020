@@ -65,7 +65,7 @@ export function WhyWorth() {
                 Nie Kupujesz Auta — Przejmujesz Odpowiedzialność
               </h3>
               <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-neutral-700">
-                Ten Yaris zasługuje na kolejnego fana motoryzacji, kogoś, kto doceni każdy detal i będzie kontynuował
+                Ten Yaris zasługuje na kolejnego fana motoryzacji — kogoś, kto doceni każdy detal i będzie kontynuował
                 historię dbałości. Jeśli to Ty — zadzwoń.
               </p>
             </div>

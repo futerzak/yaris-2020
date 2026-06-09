@@ -54,7 +54,8 @@ export function FAQ() {
               <div>
                 <div className="font-bold text-neutral-900">Masz inne pytania?</div>
                 <p className="mt-2 text-neutral-700">
-                  Zadzwoń lub napisz — chętnie odpowiemy na wszystkie wątpliwości. Nie ukrywamy nic, bo nie mamy czego.
+                  Zadzwoń, napisz na WhatsApp — chętnie odpowiemy na wszystkie wątpliwości. Nie ukrywamy nic, bo nie
+                  mamy czego.
                 </p>
               </div>
             </div>

@@ -6,6 +6,15 @@ export type ServiceEntry = {
   highlight?: boolean; // used for roof rack entry etc.
 };
 
+export type WheelSet = {
+  season: string;
+  seasonColor: string;
+  title: string;
+  rims: string;
+  tires: string;
+  tags: string[];
+};
+
 export type CarData = {
   model: string;
   version: string;
@@ -26,8 +35,8 @@ export type CarData = {
 
 export const carData: CarData = {
   model: 'TOYOTA YARIS HYBRID 1.5',
-  version: 'PREMIERE EDITION (Full Opcja)',
-  year: '2020 (Grudzień – Polska Salon)',
+  version: 'PREMIERE EDITION (pełne wyposażenie)',
+  year: '2020 (grudzień – polski salon)',
   mileage: '34 036 km (aktualny)',
   color: 'Tokyo Red / Night Sky Black (Tokyo Fusion) – lakier specjalny z kontrastowym dachem',
   drivetrain: 'Hybrid (e-CVT)',
@@ -51,7 +60,7 @@ export const carData: CarData = {
     'Head-Up Display (HUD) — projekcja informacji na przedniej szybie',
   ],
   addons: [
-    'Powłoka ceramiczna z 9-letnią gwarancją (ok. 4 lata pozostałe)',
+    'Powłoka ceramiczna z 9-letnią gwarancją (ok. 4 lata gwarancji pozostałe)',
     'Dwa komplety kół: letnie 17" Premiere Edition + zimowe 17" alufelgi (gotowe zestawy)',
     'Oryginalny bagażnik dachowy Toyota — zakup i montaż udokumentowany w ASO (3.01.2022)',
     'Czujniki parkowania przód — profesjonalna integracja ASO',
@@ -82,6 +91,25 @@ export const carData: CarData = {
   ],
 };
 
+export const wheelSets: WheelSet[] = [
+  {
+    season: 'Letnie',
+    seasonColor: 'bg-[--color-tokyo-red]',
+    title: '17" Premiere Edition',
+    rims: 'Dwukolorowe alufelgi z oryginalnego wyposażenia Premiere Edition — sportowy design z diamentowym wykończeniem.',
+    tires: 'Oryginalne opony z dostawy salonowej Toyota — takie, jakie auto miało od pierwszego dnia.',
+    tags: ['Oryginalne', '17"', 'Dwukolorowe', 'Z salonu Toyota'],
+  },
+  {
+    season: 'Zimowe',
+    seasonColor: 'bg-blue-500',
+    title: '17" Alufelgi',
+    rims: 'Kompletny zestaw zimowy na aluminiowych felgach 17" — gotowy do montażu, bez konieczności kupowania dodatkowych kół.',
+    tires: 'Nokian — oryginalny komplet zakupiony w salonie Toyota.',
+    tags: ['Kompletny zestaw', '17"', 'Nokian', 'Z salonu Toyota'],
+  },
+];
+
 export const keyFacts: Array<{ label: string; value: string }> = [
   { label: 'Rok', value: '2020' },
   { label: 'Przebieg', value: '34 036 km' },
@@ -100,7 +128,7 @@ export const ownerStory = {
 
 // Value breakdown
 export const valueAddedItems = [
-  { item: 'Powłoka ceramiczna (4 lata gwarancji pozostałe)', value: 2000 },
+  { item: 'Powłoka ceramiczna z 9-letnią gwarancją (ok. 4 lata gwarancji pozostałe)', value: 2000 },
   { item: 'Drugi komplet kół na alufelgach 17"', value: 3000 },
   { item: 'Oryginalny bagażnik dachowy Toyota', value: 1500 },
   { item: 'Pełna historia serwisowa ASO', value: 'bezcenne' as const },
@@ -131,6 +159,18 @@ export const faqItems = [
   {
     question: 'Co dostaję przy zakupie?',
     answer: 'Pełen pakiet: samochód, dwa komplety kół (letnie + zimowe na alufelgach 17"), bagażnik dachowy, wszystkie dokumenty, książkę serwisową, dokumentację ceramiki, kluczyki (2 komplety) oraz naszą pełną wiedzę o aucie i porady.',
+  },
+  {
+    question: 'Czy można pojechać na jazdę próbną?',
+    answer: 'TAK. Po wcześniejszym umówieniu chętnie umożliwimy jazdę próbną w okolicach Krakowa, żebyś mógł sprawdzić auto w ruchu.',
+  },
+  {
+    question: 'Jakie opony są w zestawie?',
+    answer: 'Letnie to oryginalne opony z dostawy salonowej Toyota (takie, jakie auto miało od pierwszego dnia). Zimowe to Nokian — oryginalny komplet kupiony w salonie Toyota. Oba zestawy na alufelgach 17", gotowe do sezonowej wymiany.',
+  },
+  {
+    question: 'Kiedy auto jest dostępne?',
+    answer: 'Od zaraz. Po uzgodnieniu warunków możemy umówić oględziny w dogodnym terminie — zwykle w ciągu kilku dni.',
   },
 ];
 

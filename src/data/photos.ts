@@ -63,8 +63,8 @@ export const serviceSidePhoto: PhotoRef = {
 };
 
 export const ceramicCoatingPhoto: PhotoRef = {
-  alt: "Head-Up Display (HUD) — projekcja na przedniej szybie",
-  url: img('20251030_070108.jpg'),
+  alt: "Lakier Tokyo Red chroniony powłoką ceramiczną — połysk i ochrona",
+  url: img('20250901_131532.jpg'),
 };
 
 export const parkingSensorsPhoto: PhotoRef = {
