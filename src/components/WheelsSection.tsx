@@ -1,5 +1,5 @@
 import { wheelSets } from '../data/carData'
-import { tiresInTrunkPhoto, wheelsPhotos } from '../data/photos'
+import { wheelsPhotos } from '../data/photos'
 import { OptimizedImage } from './OptimizedImage'
 
 export function WheelsSection() {
@@ -56,15 +56,6 @@ export function WheelsSection() {
               </div>
             ))}
           </div>
-
-          <figure className="mt-10 overflow-hidden rounded-2xl shadow-lg">
-            <OptimizedImage
-              src={tiresInTrunkPhoto.url}
-              alt={tiresInTrunkPhoto.alt}
-              className="aspect-[21/9] w-full object-cover"
-            />
-            <figcaption className="bg-neutral-50 px-4 py-3 text-sm text-neutral-600">{tiresInTrunkPhoto.alt}</figcaption>
-          </figure>
 
           <div className="mt-10 rounded-2xl bg-gradient-to-r from-[--color-tokyo-red]/5 to-blue-50 p-6">
             <div className="flex items-start gap-4">

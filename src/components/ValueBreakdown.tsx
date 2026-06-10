@@ -58,7 +58,10 @@ export function ValueBreakdown() {
 
           <div className="mt-8 rounded-xl bg-white p-6 shadow-md">
             <div className="flex items-start gap-4">
-              <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-green-100 text-2xl">
+              <div
+                aria-hidden="true"
+                className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-green-100 text-2xl"
+              >
                 ✓
               </div>
               <div>

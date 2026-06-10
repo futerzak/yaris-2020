@@ -15,9 +15,9 @@ export function ConditionSection() {
           <div className="mx-auto mt-6 max-w-3xl space-y-6">
             <div className="rounded-2xl bg-white p-8 shadow-lg">
               <p className="text-lg leading-relaxed text-neutral-700">
-                <strong>Samochody bez rysek są podejrzane.</strong> Ten egzemplarz ma drobne ślady eksploatacji — głównie
-                na plastikowych elementach (zderzaki, listwy), plus kilka powierzchownych rys na lakierze zderzaków.
-                Główne panele nadwozia chronione powłoką ceramiczną są w doskonałym stanie.
+                <strong>Samochody bez rysek są podejrzane.</strong> Ten egzemplarz ma drobne ślady eksploatacji —
+                powierzchowne rysy i odpryski na lakierze zderzaków (poniżej). Główne panele nadwozia chronione
+                powłoką ceramiczną są w doskonałym stanie.
               </p>
               <p className="mt-4 text-neutral-600">
                 Poniżej zdjęcia pokazują rzeczywisty stan — żadnych niespodzianek przy oględzinach.
@@ -41,12 +41,11 @@ export function ConditionSection() {
                     <strong>Styczeń/Luty 2022 — Naprawa w ASO Toyota:</strong> Wymiana drzwi na nowe oryginalne +
                     profesjonalne nałożenie powłoki ceramicznej na nowy element (zgodnie z resztą nadwozia).
                   </p>
-                  <p className="mt-3 text-sm text-blue-700">
-                    ✓ Pełna dokumentacja naprawy dostępna do wglądu
-                    <br />
-                    ✓ Części oryginalne Toyota
-                    <br />✓ Ceramika aplikowana przez tego samego specjalistę
-                  </p>
+                  <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-blue-700">
+                    <li>Pełna dokumentacja naprawy dostępna do wglądu</li>
+                    <li>Części oryginalne Toyota</li>
+                    <li>Ceramika aplikowana przez tego samego specjalistę</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -63,7 +62,10 @@ export function ConditionSection() {
 
           <div className="mt-8 rounded-xl bg-gradient-to-r from-[--color-tokyo-red]/5 to-neutral-100 p-6">
             <div className="flex items-start gap-4">
-              <div className="mt-1 flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red] text-white">
+              <div
+                aria-hidden="true"
+                className="mt-1 flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red] text-white"
+              >
                 ✓
               </div>
               <div>

@@ -12,7 +12,8 @@ export function ServiceHistory() {
               Historia Serwisowa
             </div>
             <h2 className="text-3xl font-black tracking-tight md:text-4xl">
-              🛠️ Karta Serwisowa ASO: Pełna Transparentność
+              <span aria-hidden="true">🛠️ </span>
+              Karta Serwisowa ASO: Pełna Transparentność
             </h2>
             <p className="mt-4 text-lg text-neutral-700">
               Serwis <strong>wyłącznie w ASO</strong>, regularne testy baterii hybrydowej. Pozycja dotycząca bagażnika

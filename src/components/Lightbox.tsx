@@ -9,7 +9,10 @@ type Props = {
   onNext?: () => void
 }
 
+const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+
 export function Lightbox({ open, onClose, src, alt, onPrev, onNext }: Props) {
+  const dialogRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const lastFocused = useRef<HTMLElement | null>(null)
 
@@ -19,9 +22,25 @@ export function Lightbox({ open, onClose, src, alt, onPrev, onNext }: Props) {
     closeRef.current?.focus()
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-      else if (e.key === 'ArrowLeft') onPrev?.()
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+      if (e.key === 'ArrowLeft') onPrev?.()
       else if (e.key === 'ArrowRight') onNext?.()
+      else if (e.key === 'Tab' && dialogRef.current) {
+        const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE))
+        if (focusable.length === 0) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
     }
     window.addEventListener('keydown', onKey)
     const prevOverflow = document.body.style.overflow
@@ -36,8 +55,11 @@ export function Lightbox({ open, onClose, src, alt, onPrev, onNext }: Props) {
 
   if (!open) return null
 
+  const webp = src?.replace(/\.(jpe?g|png)$/i, '.webp')
+
   return (
     <div
+      ref={dialogRef}
       className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
@@ -47,7 +69,10 @@ export function Lightbox({ open, onClose, src, alt, onPrev, onNext }: Props) {
       <div className="container flex h-full items-center justify-center">
         <div className="relative max-h-[85vh] w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
           {src ? (
-            <img src={src} alt={alt} className="max-h-[85vh] w-full rounded-xl object-contain" />
+            <picture>
+              {webp && webp !== src && <source srcSet={webp} type="image/webp" />}
+              <img src={src} alt={alt} className="max-h-[85vh] w-full rounded-xl object-contain" />
+            </picture>
           ) : (
             <div className="rounded-xl bg-white p-6 text-center">
               <div className="text-sm text-neutral-700">{alt}</div>

@@ -12,7 +12,8 @@ export function ExpertSection() {
               Technologia Hybrid
             </div>
             <h2 className="text-3xl font-black tracking-tight md:text-4xl">
-              ⚡ Europejski Samochód Roku 2021 — Premiere Edition
+              <span aria-hidden="true">⚡ </span>
+              Europejski Samochód Roku 2021 — Premiere Edition
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
               Hybrydowy napęd <strong>116 KM (e-CVT)</strong> łączy dynamikę z oszczędnością. Program gwarancyjny
