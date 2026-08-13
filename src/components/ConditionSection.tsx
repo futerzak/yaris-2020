@@ -1,82 +1,47 @@
 import { conditionPhotos } from '../data/photos'
 import { OptimizedImage } from './OptimizedImage'
+import { SectionHeader } from './SectionHeader'
 
 export function ConditionSection() {
   return (
     <section className="border-b border-neutral-200 bg-neutral-50">
       <div className="container py-16 md:py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-2 text-center text-sm font-bold uppercase tracking-wider text-[--color-tokyo-red]">
-            Transparentność
-          </div>
-          <h2 className="text-center text-3xl font-black tracking-tight md:text-4xl">
-            Stan Techniczny: Pełna Uczciwość
-          </h2>
-          <div className="mx-auto mt-6 max-w-3xl space-y-6">
-            <div className="rounded-2xl bg-white p-8 shadow-lg">
-              <p className="text-lg leading-relaxed text-neutral-700">
-                <strong>Samochody bez rysek są podejrzane.</strong> Ten egzemplarz ma drobne ślady eksploatacji —
-                powierzchowne rysy i odpryski na lakierze zderzaków (poniżej). Główne panele nadwozia chronione
-                powłoką ceramiczną są w doskonałym stanie.
-              </p>
-              <p className="mt-4 text-neutral-600">
-                Poniżej zdjęcia pokazują rzeczywisty stan — żadnych niespodzianek przy oględzinach.
-              </p>
-            </div>
+          <SectionHeader
+            kicker="Stan"
+            title="Bez niedomówień"
+            subtitle="Samochody bez rysek są podejrzane. Tu widać to, co widać przy oględzinach."
+          />
 
-            <div className="rounded-2xl border-2 border-blue-200 bg-blue-50 p-8 shadow-lg">
-              <div className="flex items-start gap-4">
-                <div
-                  className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-blue-600 text-xl text-white"
-                  aria-hidden="true"
-                >
-                  ℹ️
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-blue-900">Historia Naprawy (2021-2022)</h3>
-                  <p className="mt-3 text-blue-800">
-                    <strong>4 grudnia 2021:</strong> Incydent parkingowy — wgniecenie i obtarcie lewych tylnych drzwi.
-                  </p>
-                  <p className="mt-2 text-blue-800">
-                    <strong>Styczeń/Luty 2022 — Naprawa w ASO Toyota:</strong> Wymiana drzwi na nowe oryginalne +
-                    profesjonalne nałożenie powłoki ceramicznej na nowy element (zgodnie z resztą nadwozia).
-                  </p>
-                  <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-blue-700">
-                    <li>Pełna dokumentacja naprawy dostępna do wglądu</li>
-                    <li>Części oryginalne Toyota</li>
-                    <li>Ceramika aplikowana przez tego samego specjalistę</li>
-                  </ul>
-                </div>
+          <div className="mt-8 border border-neutral-200 bg-white p-6 md:p-8">
+            <p className="text-neutral-700 leading-relaxed">
+              Powierzchowne rysy i odpryski na lakierze zderzaków — poniżej. Główne panele chronione
+              ceramiką są w bardzo dobrym stanie.
+            </p>
+            <div className="mt-6 border-t border-neutral-200 pt-6">
+              <div className="text-[11px] font-medium uppercase tracking-[0.16em] text-[--color-tokyo-red]">
+                Naprawa ASO · 2021–2022
               </div>
+              <p className="mt-2 text-neutral-700 leading-relaxed">
+                4 grudnia 2021: incydent parkingowy — lewe tylne drzwi. Styczeń/luty 2022: wymiana
+                drzwi na nowe oryginalne w ASO Toyota i ceramika na nowy element. Dokumentacja do
+                wglądu.
+              </p>
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {conditionPhotos.map((p, idx) => (
-              <figure key={idx} className="overflow-hidden rounded-2xl shadow-lg">
-                <OptimizedImage src={p.url} alt={p.alt} className="aspect-[4/3] w-full object-cover" />
-                <figcaption className="bg-white p-4 text-sm text-neutral-600">{p.alt}</figcaption>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            {conditionPhotos.map((p) => (
+              <figure key={p.url} className="overflow-hidden rounded-md border border-neutral-200 bg-white">
+                <OptimizedImage
+                  src={p.url}
+                  alt={p.alt}
+                  className="aspect-[4/3] w-full object-cover"
+                  sizes="(max-width: 640px) calc(100vw - 2rem), 280px"
+                />
+                <figcaption className="px-3 py-2.5 text-xs text-neutral-600">{p.alt}</figcaption>
               </figure>
             ))}
-          </div>
-
-          <div className="mt-8 rounded-xl bg-gradient-to-r from-[--color-tokyo-red]/5 to-neutral-100 p-6">
-            <div className="flex items-start gap-4">
-              <div
-                aria-hidden="true"
-                className="mt-1 flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red] text-white"
-              >
-                ✓
-              </div>
-              <div>
-                <div className="font-bold text-neutral-900">Dlaczego pokazujemy defekty?</div>
-                <p className="mt-2 text-neutral-700">
-                  Uczciwość buduje zaufanie. Każdy używany samochód ma ślady eksploatacji. Ważne, że rysy są
-                  powierzchowne i nie wpływają na funkcjonalność ani bezpieczeństwo. Główne panele lakieru chronione
-                  ceramiką są bez uszkodzeń.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

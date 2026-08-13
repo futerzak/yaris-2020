@@ -1,6 +1,7 @@
 import { carData } from '../data/carData'
 import { ceramicCoatingPhoto, gtechniqCertPhoto, parkingSensorsPhoto } from '../data/photos'
 import { OptimizedImage } from './OptimizedImage'
+import { SectionHeader } from './SectionHeader'
 
 export function Addons() {
   return (
@@ -8,62 +9,50 @@ export function Addons() {
       <div className="container py-16 md:py-20">
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <div>
-            <div className="mb-2 text-sm font-bold uppercase tracking-wider text-[--color-tokyo-red]">
-              Dodatki i Stan
-            </div>
-            <h2 className="text-3xl font-black tracking-tight md:text-4xl">Pakiet Dodatków ASO & Stan</h2>
-            <ul className="mt-8 space-y-4">
+            <SectionHeader align="left" kicker="W cenie" title="Dodatki" />
+            <ul className="mt-8 space-y-3">
               {carData.addons.map((a) => (
-                <li key={a} className="flex items-start gap-4 rounded-xl bg-neutral-50 p-4 transition hover:bg-neutral-100">
+                <li
+                  key={a.text}
+                  className="flex items-start gap-3 border-b border-neutral-100 py-3 last:border-0"
+                >
                   <span
                     className={
-                      'mt-1 inline-flex h-3 w-3 flex-none rounded-full ' +
-                      (a.toLowerCase().includes('bagażnik') || a.toLowerCase().includes('ceramik')
-                        ? 'bg-[--color-tokyo-red]'
-                        : 'bg-neutral-400')
+                      'mt-2 inline-block h-1.5 w-1.5 flex-none ' +
+                      (a.highlight ? 'bg-[--color-tokyo-red]' : 'bg-neutral-400')
                     }
                   />
-                  <span
-                    className={
-                      a.toLowerCase().includes('bagażnik') || a.toLowerCase().includes('ceramik')
-                        ? 'font-bold text-[--color-tokyo-red]'
-                        : ''
-                    }
-                  >
-                    {a}
+                  <span className={a.highlight ? 'font-medium text-neutral-900' : 'text-neutral-700'}>
+                    {a.text}
                   </span>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <div className="mb-4 text-sm font-bold uppercase tracking-wide text-neutral-600">Wizualnie</div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <figure className="overflow-hidden rounded-2xl shadow-lg sm:col-span-2">
-                <OptimizedImage
-                  src={gtechniqCertPhoto.url}
-                  alt={gtechniqCertPhoto.alt}
-                  className="aspect-[16/9] w-full object-cover object-center"
-                />
-                <figcaption className="bg-neutral-50 px-4 py-3 text-sm font-medium text-neutral-700">
-                  {gtechniqCertPhoto.alt}
-                </figcaption>
-              </figure>
-              <figure className="overflow-hidden rounded-2xl shadow-lg">
-                <OptimizedImage
-                  src={ceramicCoatingPhoto.url}
-                  alt={ceramicCoatingPhoto.alt}
-                  className="aspect-square w-full object-cover"
-                />
-              </figure>
-              <figure className="overflow-hidden rounded-2xl shadow-lg">
-                <OptimizedImage
-                  src={parkingSensorsPhoto.url}
-                  alt={parkingSensorsPhoto.alt}
-                  className="aspect-square w-full object-cover"
-                />
-              </figure>
-            </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <figure className="overflow-hidden rounded-md border border-neutral-200 sm:col-span-2">
+              <OptimizedImage
+                src={gtechniqCertPhoto.url}
+                alt={gtechniqCertPhoto.alt}
+                className="aspect-[16/9] w-full object-cover object-center"
+                sizes="(max-width: 1024px) calc(100vw - 2rem), 580px"
+              />
+              <figcaption className="bg-neutral-50 px-3 py-2.5 text-sm text-neutral-700">
+                {gtechniqCertPhoto.alt}
+              </figcaption>
+            </figure>
+            <OptimizedImage
+              src={ceramicCoatingPhoto.url}
+              alt={ceramicCoatingPhoto.alt}
+              className="aspect-square w-full rounded-md object-cover"
+              sizes="(max-width: 640px) calc(100vw - 2rem), 280px"
+            />
+            <OptimizedImage
+              src={parkingSensorsPhoto.url}
+              alt={parkingSensorsPhoto.alt}
+              className="aspect-square w-full rounded-md object-cover"
+              sizes="(max-width: 640px) calc(100vw - 2rem), 280px"
+            />
           </div>
         </div>
       </div>

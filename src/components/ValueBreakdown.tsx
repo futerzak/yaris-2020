@@ -1,4 +1,5 @@
-import { valueAddedItems } from '../data/carData'
+import { carData, formatKm, formatPln, formatPlnNumber, marketComparables, valueAddedItems } from '../data/carData'
+import { SectionHeader } from './SectionHeader'
 
 export function ValueBreakdown() {
   const totalValue = valueAddedItems
@@ -6,71 +7,61 @@ export function ValueBreakdown() {
     .reduce((sum, item) => sum + (item.value as number), 0)
 
   return (
-    <section className="border-b border-neutral-200 bg-gradient-to-b from-neutral-50 to-white">
+    <section className="border-b border-neutral-200 bg-neutral-50">
       <div className="container py-16 md:py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-2 text-center text-sm font-bold uppercase tracking-wider text-[--color-tokyo-red]">
-            Wartość Dodana
-          </div>
-          <h2 className="text-center text-3xl font-black tracking-tight md:text-4xl">
-            Co Tracisz, Nie Kupując Tego Auta
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-neutral-700">
-            To nie tylko samochód — to kompletny pakiet, który oszczędza Ci tysiące złotych.
-          </p>
+          <SectionHeader
+            kicker="Cena"
+            title={`Skąd ${formatPlnNumber(carData.pricePln)}`}
+            subtitle="Cena z sierpnia 2025 (82 000 PLN) jest nieaktualna. Poniżej rynek z sierpnia 2026 i to, co jest w komplecie."
+          />
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-10 border border-neutral-200 bg-white">
             {valueAddedItems.map((item) => (
               <div
                 key={item.item}
-                className="flex items-start gap-4 rounded-2xl bg-white p-6 shadow-lg transition-transform hover:-translate-y-1"
+                className="flex items-baseline justify-between gap-4 border-b border-neutral-100 px-5 py-4 last:border-0"
               >
-                <div
-                  aria-hidden="true"
-                  className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red]/10 text-2xl"
-                >
-                  {item.icon}
-                </div>
-                <div className="flex-1">
-                  <div className="font-bold text-neutral-900">{item.item}</div>
-                  <div className="mt-2 text-2xl font-black text-[--color-tokyo-red]">
-                    {typeof item.value === 'number' ? `${item.value.toLocaleString('pl-PL')} PLN` : item.value}
-                  </div>
+                <div className="text-neutral-800">{item.item}</div>
+                <div className="shrink-0 font-display text-lg tabular-nums text-neutral-900">
+                  {typeof item.value === 'number' ? formatPln(item.value) : item.value}
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-10 overflow-hidden rounded-2xl bg-gradient-to-r from-[--color-tokyo-red] to-red-600 p-8 text-white shadow-2xl md:p-12">
-            <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-              <div>
-                <div className="text-sm font-semibold uppercase tracking-wide opacity-90">Łączna Wartość Dodatków</div>
-                <div className="mt-2 text-4xl font-black md:text-5xl">~{totalValue.toLocaleString('pl-PL')} PLN</div>
-                <div className="mt-2 text-sm opacity-90">+ Pełna historia ASO (bezcenna)</div>
-              </div>
-              <div className="text-center md:text-right">
-                <div className="text-sm font-semibold uppercase tracking-wide opacity-90">Oszczędzasz</div>
-                <div className="mt-1 text-3xl font-black">Tysiące Złotych</div>
-                <div className="mt-2 text-sm opacity-90">Wszystko w cenie auta</div>
-              </div>
+            <div className="flex items-baseline justify-between gap-4 bg-[--color-night-sky] px-5 py-5 text-white">
+              <div className="text-sm uppercase tracking-[0.12em] text-white/60">Dodatki policzalne</div>
+              <div className="font-display text-3xl tabular-nums">~{formatPln(totalValue)}</div>
             </div>
           </div>
 
-          <div className="mt-8 rounded-xl bg-white p-6 shadow-md">
-            <div className="flex items-start gap-4">
-              <div
-                aria-hidden="true"
-                className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-green-100 text-2xl"
-              >
-                ✓
+          <div className="mt-8">
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-500">
+              Porównania Otomoto · 2026
+            </h3>
+            <div className="mt-3 border border-neutral-200 bg-white">
+              <div className="flex items-baseline justify-between gap-4 border-b border-[--color-tokyo-red]/30 bg-[--color-tokyo-red]/5 px-5 py-4">
+                <div>
+                  <div className="font-medium text-neutral-900">Ten egzemplarz</div>
+                  <div className="mt-0.5 text-sm text-neutral-600">
+                    Premiere Edition, 1. właściciel, {formatKm(carData.mileageKm)}, ASO, dodatki
+                  </div>
+                </div>
+                <div className="shrink-0 font-display text-2xl tabular-nums text-[--color-tokyo-red]">
+                  {formatPln(carData.pricePln)}
+                </div>
               </div>
-              <div>
-                <div className="font-bold text-neutral-900">Kompletny Pakiet — Bez Ukrytych Kosztów</div>
-                <p className="mt-2 text-neutral-700">
-                  Kupujesz auto gotowe do użytkowania przez cały rok. Nie musisz dokupować kół zimowych, bagażnika ani
-                  ceramiki. Wszystko jest już zrobione i opłacone.
-                </p>
-              </div>
+              {marketComparables.map((comp) => (
+                <div
+                  key={comp.note}
+                  className="flex items-baseline justify-between gap-4 border-b border-neutral-100 px-5 py-4 last:border-0"
+                >
+                  <div className="text-sm text-neutral-600">{comp.note}</div>
+                  <div className="shrink-0 text-right">
+                    <div className="font-display text-lg tabular-nums">{formatPln(comp.price)}</div>
+                    <div className="text-xs text-neutral-500">{formatKm(comp.km)}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -78,4 +69,3 @@ export function ValueBreakdown() {
     </section>
   )
 }
-

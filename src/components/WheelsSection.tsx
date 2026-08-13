@@ -1,52 +1,42 @@
 import { wheelSets } from '../data/carData'
-import { wheelsPhotos } from '../data/photos'
 import { OptimizedImage } from './OptimizedImage'
+import { SectionHeader } from './SectionHeader'
 
 export function WheelsSection() {
   return (
     <section className="border-b border-neutral-200 bg-white">
       <div className="container py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-2 text-center text-sm font-bold uppercase tracking-wider text-[--color-tokyo-red]">
-            Kompletne Wyposażenie
-          </div>
-          <h2 className="text-center text-3xl font-black tracking-tight md:text-4xl">
-            Dwa Komplety Kół — Gotowy na Każdy Sezon
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-neutral-700">
-            Oba zestawy na alufelgach 17" z oryginalnymi oponami z salonu Toyota — oszczędność czasu i pieniędzy przy
-            zmianie sezonowej.
-          </p>
+          <SectionHeader
+            kicker="Koła"
+            title="Dwa komplety 17″"
+            subtitle="Letnie Premiere Edition i zimowe Nokian — oba na alufelgach, z salonu Toyota."
+          />
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            {wheelSets.map((set, index) => (
-              <div
-                key={set.season}
-                className="overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-50 to-white shadow-xl"
-              >
-                <div className="aspect-square overflow-hidden">
-                  <OptimizedImage
-                    src={wheelsPhotos[index].url}
-                    alt={wheelsPhotos[index].alt}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="mb-2 flex items-center gap-2">
-                    <div className={`h-2 w-2 rounded-full ${set.seasonColor}`} />
-                    <div className="text-xs font-bold uppercase tracking-wide text-neutral-600">{set.season}</div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {wheelSets.map((set) => (
+              <div key={set.season} className="overflow-hidden rounded-md border border-neutral-200">
+                <OptimizedImage
+                  src={set.photo.url}
+                  alt={set.photo.alt}
+                  className="aspect-square w-full object-cover"
+                  sizes="(max-width: 768px) calc(100vw - 2rem), 490px"
+                />
+                <div className="p-5">
+                  <div className="flex items-center gap-2">
+                    <div className={`h-1.5 w-1.5 ${set.seasonColor}`} />
+                    <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-500">
+                      {set.season}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-neutral-900">{set.title}</h3>
+                  <h3 className="font-display mt-2 text-2xl">{set.title}</h3>
                   <p className="mt-2 text-neutral-600">{set.rims}</p>
-                  <div className="mt-4 rounded-xl border border-neutral-200 bg-white p-4">
-                    <div className="text-xs font-bold uppercase tracking-wide text-neutral-500">Opony</div>
-                    <p className="mt-1 text-sm font-medium text-neutral-800">{set.tires}</p>
-                  </div>
+                  <p className="mt-3 text-sm text-neutral-800">{set.tires}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {set.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700"
+                        className="border border-neutral-200 px-2.5 py-1 text-xs text-neutral-600"
                       >
                         {tag}
                       </span>
@@ -55,25 +45,6 @@ export function WheelsSection() {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-10 rounded-2xl bg-gradient-to-r from-[--color-tokyo-red]/5 to-blue-50 p-6">
-            <div className="flex items-start gap-4">
-              <div
-                className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-[--color-tokyo-red] text-xl text-white"
-                aria-hidden="true"
-              >
-                ✓
-              </div>
-              <div>
-                <div className="text-lg font-bold text-neutral-900">Oszczędność i Wygoda</div>
-                <p className="mt-2 text-neutral-700">
-                  Nie musisz inwestować w drugi komplet felg ani dokupywać opon — oba zestawy są gotowe do użycia.
-                  Wymiana sezonowa zajmuje kilka minut, a aluminiowe felgi zimowe zapewniają lepszą estetykę niż
-                  stalowe.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

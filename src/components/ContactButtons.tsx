@@ -15,7 +15,7 @@ export function ContactButtons({
   showPhoneLabel = true,
 }: ContactButtonsProps) {
   const phonePretty = formatPhone()
-  const sizeClass = size === 'lg' ? 'text-lg' : size === 'md' ? 'text-base' : 'text-sm'
+  const sizeClass = size === 'lg' ? 'text-base' : size === 'md' ? 'text-sm' : 'text-sm'
   const paddingClass = size === 'sm' ? 'px-4 py-2' : 'px-6 py-3'
   const layoutClass = layout === 'stack' ? 'flex-col' : 'flex-row flex-wrap'
 
@@ -28,7 +28,7 @@ export function ContactButtons({
         href={whatsappHref()}
         target="_blank"
         rel="noopener noreferrer"
-        className={`btn-whatsapp ${sizeClass} ${paddingClass} ${variant === 'on-light' ? 'btn-whatsapp--outline' : ''}`}
+        className={`${variant === 'on-dark' ? 'btn-ghost' : 'btn-whatsapp btn-whatsapp--outline'} ${sizeClass} ${paddingClass}`}
       >
         WhatsApp
       </a>
@@ -39,9 +39,11 @@ export function ContactButtons({
 export function StickyContactInfo() {
   return (
     <div className="min-w-0">
-      <div className="truncate text-xs font-semibold uppercase tracking-wide text-neutral-500">Toyota Yaris Hybrid</div>
-      <div className="text-lg font-black text-neutral-900">
-        {carData.price} {carData.negotiable && <span className="text-sm font-semibold text-neutral-500">(do negocjacji)</span>}
+      <div className="truncate text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-500">
+        Yaris Hybrid · 2020
+      </div>
+      <div className="font-display text-xl tabular-nums text-neutral-900">
+        {carData.price}
       </div>
     </div>
   )

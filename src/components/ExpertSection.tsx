@@ -1,6 +1,7 @@
 import { carData } from '../data/carData'
 import { expertSidePhoto, hybridClusterPhoto } from '../data/photos'
 import { OptimizedImage } from './OptimizedImage'
+import { SectionHeader } from './SectionHeader'
 
 export function ExpertSection() {
   return (
@@ -8,46 +9,47 @@ export function ExpertSection() {
       <div className="container py-16 md:py-20">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
-            <div className="mb-2 text-sm font-bold uppercase tracking-wider text-[--color-tokyo-red]">
-              Technologia Hybrid
-            </div>
-            <h2 className="text-3xl font-black tracking-tight md:text-4xl">
-              <span aria-hidden="true">⚡ </span>
-              Europejski Samochód Roku 2021 — Premiere Edition
-            </h2>
+            <SectionHeader
+              align="left"
+              kicker="Hybryda"
+              title="Europejski Samochód Roku 2021"
+            />
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
-              Hybrydowy napęd <strong>116 KM (e-CVT)</strong> łączy dynamikę z oszczędnością. Program gwarancyjny
-              Toyoty na akumulator hybrydowy to nawet <strong>do 10 lat ochrony</strong> przy regularnych przeglądach,
-              potwierdzonych testami baterii.
+              Napęd <strong>116 KM (e-CVT)</strong>. Program Toyoty na akumulator hybrydowy to nawet{' '}
+              <strong>do 10 lat</strong> przy regularnych przeglądach i testach baterii — wpisy są w
+              tabeli ASO.
             </p>
-            <div className="mt-8 rounded-2xl bg-neutral-50 p-6">
-              <div className="mb-4 flex items-center gap-2">
-                <div className="h-1 w-12 bg-[--color-tokyo-red]" />
-                <div className="text-sm font-bold uppercase tracking-wide text-neutral-600">Toyota Safety Sense</div>
+            <div className="mt-8 border border-neutral-200 bg-neutral-50 p-6">
+              <div className="text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-500">
+                Toyota Safety Sense
               </div>
-              <ul className="grid gap-3 text-neutral-800">
+              <ul className="mt-4 grid gap-2.5 text-neutral-800">
                 {carData.tssSystems.map((s) => (
                   <li key={s} className="flex items-start gap-3">
-                    <span className="mt-1.5 inline-block h-1.5 w-1.5 flex-none rounded-full bg-[--color-tokyo-red]" />
+                    <span className="mt-2 inline-block h-1 w-1 flex-none bg-[--color-tokyo-red]" />
                     <span>{s}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="grid gap-4">
+          <div className="grid gap-3">
             <OptimizedImage
               src={expertSidePhoto.url}
               alt={expertSidePhoto.alt}
-              className="aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl"
+              className="aspect-[4/3] w-full rounded-md object-cover"
+              sizes="(max-width: 768px) calc(100vw - 2rem), 580px"
             />
-            <figure className="overflow-hidden rounded-2xl shadow-lg">
+            <figure className="overflow-hidden rounded-md border border-neutral-200">
               <OptimizedImage
                 src={hybridClusterPhoto.url}
                 alt={hybridClusterPhoto.alt}
                 className="aspect-[16/9] w-full object-cover"
+                sizes="(max-width: 768px) calc(100vw - 2rem), 580px"
               />
-              <figcaption className="bg-neutral-50 px-4 py-3 text-sm text-neutral-600">{hybridClusterPhoto.alt}</figcaption>
+              <figcaption className="bg-neutral-50 px-3 py-2.5 text-sm text-neutral-600">
+                {hybridClusterPhoto.alt}
+              </figcaption>
             </figure>
           </div>
         </div>

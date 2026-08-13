@@ -7,8 +7,8 @@ const BASE_URL = import.meta.env.BASE_URL
 const img = (path: string) => `${BASE_URL}Yaris/${path}`
 
 export const heroPhoto: PhotoRef = {
-  alt: 'Widok tylny — Tokyo Red, HYBRID, relingi dachowe i kontrastowy dach',
-  url: img('20250901_131522.jpg'),
+  alt: 'Profil — Tokyo Red, dach Night Sky Black, relingi i alufelgi 17"',
+  url: img('20250901_131546.jpg'),
 }
 
 export const expertSidePhoto: PhotoRef = {
@@ -36,18 +36,15 @@ export const gtechniqCertPhoto: PhotoRef = {
   url: img('IMG_20210113_221204.jpg'),
 }
 
+// Galeria — tylko zdjęcia, które NIE pojawiają się w sekcjach dedykowanych
 export const designPhotos: PhotoRef[] = [
   { alt: 'Tył 3/4 — HYBRID, relingi dachowe, kontrastowy dach', url: img('20250901_131516.jpg') },
+  { alt: 'Tył — Tokyo Red, HYBRID, relingi i kontrastowy dach', url: img('20250901_131522.jpg') },
   { alt: 'Reflektory Full LED — zbliżenie', url: img('20250901_131640.jpg') },
-  { alt: 'Profil lewy — kontrastowy dach i alufelgi 17"', url: img('20250901_131546.jpg') },
   { alt: 'Reling dachowy Toyota — mocowanie z logo marki', url: img('20250901_131621.jpg') },
-  { alt: 'Wnętrze — kokpit, fotele diament, czerwone przeszycia', url: img('20251020_054941.jpg') },
-  { alt: 'Wnętrze — strona pasażera, niebieskie oświetlenie ambient', url: img('20251020_054955.jpg') },
-  { alt: 'Tylna kanapa — ISOFIX, diamentowy wzór', url: img('20251020_165533.jpg') },
+  { alt: 'Wnętrze wieczorem — niebieskie oświetlenie ambient, fotele diament', url: img('20251020_054955.jpg') },
   { alt: 'Składane tylne siedzenia — rozszerzona przestrzeń bagażowa', url: img('IMG_20201222_072443.jpg') },
   { alt: 'Przestronny bagażnik — transport mebli (codzienna eksploatacja)', url: img('IMG_20210109_155915.jpg') },
-  { alt: 'Przyciski: podgrzewana kierownica, czujniki parkowania, AHB', url: img('IMG_20210225_111440.jpg') },
-  { alt: 'Czujnik parkowania przód — integracja ASO w zderzaku', url: img('20250901_131650.jpg') },
   { alt: 'Lewy przedni róg — reflektor Full LED', url: img('IMG_20201222_072710.jpg') },
 ]
 
@@ -57,8 +54,8 @@ export const interiorHero: PhotoRef = {
 }
 
 export const interiorDetail: PhotoRef = {
-  alt: 'Head-Up Display (HUD) — projekcja prędkości na przedniej szybie',
-  url: img('20251030_070108.jpg'),
+  alt: 'Przyciski: podgrzewana kierownica, czujniki parkowania, AHB',
+  url: img('IMG_20210225_111440.jpg'),
 }
 
 export const interiorRearPhoto: PhotoRef = {
@@ -96,15 +93,12 @@ export const conditionPhotos: PhotoRef[] = [
   },
 ]
 
-export const wheelsPhotos: PhotoRef[] = [
-  {
-    alt: 'Letnie 17" Premiere Edition — dwukolorowe alufelgi Toyota',
-    url: img('20250901_131605.jpg'),
-  },
-  {
-    alt: 'Alufelgi 17" — widok boku tylnego (zimowy komplet Nokian)',
-    url: img('IMG_20210109_140130.jpg'),
-  },
-]
+export const wheelsSummerPhoto: PhotoRef = {
+  alt: 'Letnie 17" Premiere Edition — dwukolorowe alufelgi Toyota',
+  url: img('20250901_131605.jpg'),
+}
 
-export const ogImageUrl = 'https://futerzak.github.io/yaris-2020/Yaris/FB_IMG_1615045136405.jpg'
+export const wheelsWinterPhoto: PhotoRef = {
+  alt: 'Styczeń 2021 — komplet zimowy Nokian na alufelgach 17"',
+  url: img('IMG_20210109_140130.jpg'),
+}

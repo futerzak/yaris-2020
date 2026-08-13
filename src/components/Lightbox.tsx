@@ -7,27 +7,52 @@ type Props = {
   alt: string
   onPrev?: () => void
   onNext?: () => void
+  currentIndex?: number
+  totalCount?: number
 }
 
 const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+const SWIPE_THRESHOLD = 50
 
-export function Lightbox({ open, onClose, src, alt, onPrev, onNext }: Props) {
+export function Lightbox({ open, onClose, src, alt, onPrev, onNext, currentIndex, totalCount }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const lastFocused = useRef<HTMLElement | null>(null)
+  const touchStartX = useRef<number | null>(null)
 
+  // Najświeższe callbacki dla stabilnego listenera klawiatury
+  const callbacks = useRef({ onClose, onPrev, onNext })
+  useEffect(() => {
+    callbacks.current = { onClose, onPrev, onNext }
+  })
+
+  // Focus + scroll-lock wyłącznie przy przejściu zamknięte → otwarte.
+  // Nawigacja prev/next NIE re-runuje tego effectu, więc focus nie skacze,
+  // a po zamknięciu wraca na miniaturę, która otworzyła podgląd.
   useEffect(() => {
     if (!open) return
     lastFocused.current = document.activeElement as HTMLElement | null
     closeRef.current?.focus()
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = prevOverflow
+      lastFocused.current?.focus()
+    }
+  }, [open])
+
+  useEffect(() => {
+    if (!open) return
 
     const onKey = (e: KeyboardEvent) => {
+      const cb = callbacks.current
       if (e.key === 'Escape') {
-        onClose()
+        cb.onClose()
         return
       }
-      if (e.key === 'ArrowLeft') onPrev?.()
-      else if (e.key === 'ArrowRight') onNext?.()
+      if (e.key === 'ArrowLeft') cb.onPrev?.()
+      else if (e.key === 'ArrowRight') cb.onNext?.()
       else if (e.key === 'Tab' && dialogRef.current) {
         const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE))
         if (focusable.length === 0) return
@@ -43,19 +68,24 @@ export function Lightbox({ open, onClose, src, alt, onPrev, onNext }: Props) {
       }
     }
     window.addEventListener('keydown', onKey)
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prevOverflow
-      lastFocused.current?.focus()
-    }
-  }, [open, onClose, onPrev, onNext])
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
   if (!open) return null
 
   const webp = src?.replace(/\.(jpe?g|png)$/i, '.webp')
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    touchStartX.current = null
+    if (Math.abs(dx) < SWIPE_THRESHOLD) return
+    if (dx > 0) onPrev?.()
+    else onNext?.()
+  }
 
   return (
     <div
@@ -67,7 +97,12 @@ export function Lightbox({ open, onClose, src, alt, onPrev, onNext }: Props) {
       aria-label={alt || 'Podgląd zdjęcia'}
     >
       <div className="container flex h-full items-center justify-center">
-        <div className="relative max-h-[85vh] w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="relative max-h-[85vh] w-full max-w-4xl"
+          onClick={(e) => e.stopPropagation()}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {src ? (
             <picture>
               {webp && webp !== src && <source srcSet={webp} type="image/webp" />}
@@ -106,6 +141,12 @@ export function Lightbox({ open, onClose, src, alt, onPrev, onNext }: Props) {
           >
             Zamknij
           </button>
+
+          {typeof currentIndex === 'number' && totalCount ? (
+            <div className="absolute left-2 top-2 rounded-full bg-black/70 px-3 py-1 text-sm font-medium text-white">
+              {currentIndex + 1} / {totalCount}
+            </div>
+          ) : null}
 
           {alt && (
             <div className="absolute inset-x-0 bottom-0 rounded-b-xl bg-gradient-to-t from-black/70 to-transparent p-4 text-center text-sm text-white">

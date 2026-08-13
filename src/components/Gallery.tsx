@@ -1,34 +1,53 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { designPhotos } from '../data/photos'
 import { Lightbox } from './Lightbox'
 import { OptimizedImage } from './OptimizedImage'
+import { SectionHeader } from './SectionHeader'
 
 export function Gallery() {
   const [openIdx, setOpenIdx] = useState<number | null>(null)
-  const active = openIdx !== null ? designPhotos[openIdx!] : undefined
+  const active = openIdx !== null ? designPhotos[openIdx] : undefined
+
+  const handleClose = useCallback(() => setOpenIdx(null), [])
+  const handlePrev = useCallback(
+    () => setOpenIdx((i) => (i === null ? i : (i - 1 + designPhotos.length) % designPhotos.length)),
+    [],
+  )
+  const handleNext = useCallback(
+    () => setOpenIdx((i) => (i === null ? i : (i + 1) % designPhotos.length)),
+    [],
+  )
 
   return (
-    <section className="border-b border-neutral-200 bg-section-tint">
+    <section className="border-b border-neutral-200 bg-white">
       <div className="container py-16 md:py-20">
-        <div className="mb-2 text-center text-sm font-bold uppercase tracking-wider text-[--color-tokyo-red]">
-          Galeria
-        </div>
-        <h2 className="text-center text-3xl font-black tracking-tight md:text-4xl">
-          Detale, Które Robią Różnicę
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-neutral-700">
-          Stylistyka Tokyo Fusion: 17" alufelgi, pełny LED, kontrastowy czarny dach — {designPhotos.length} zdjęć.
-        </p>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionHeader
+          kicker="Galeria"
+          title="Zdjęcia"
+          subtitle={`${designPhotos.length} ujęć tego egzemplarza — bez stocku.`}
+        />
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {designPhotos.map((p, idx) => (
             <button
               key={p.url}
               onClick={() => setOpenIdx(idx)}
-              className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className={`group relative block w-full overflow-hidden rounded-md ${
+                idx === 0 ? 'sm:col-span-2 lg:col-span-2' : ''
+              }`}
             >
-              <OptimizedImage src={p.url} alt={p.alt} className="aspect-[4/3] w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="absolute bottom-0 left-0 right-0 translate-y-full p-4 text-left text-sm font-medium text-white transition-transform duration-300 group-hover:translate-y-0">
+              <OptimizedImage
+                src={p.url}
+                alt={p.alt}
+                className={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] ${
+                  idx === 0 ? 'aspect-[16/9] lg:aspect-[16/8]' : 'aspect-[4/3]'
+                }`}
+                sizes={
+                  idx === 0
+                    ? '(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 2rem), 780px'
+                    : '(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(50vw - 2rem), 380px'
+                }
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent p-3 text-left text-sm text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
                 {p.alt}
               </div>
             </button>
@@ -37,11 +56,13 @@ export function Gallery() {
       </div>
       <Lightbox
         open={openIdx !== null}
-        onClose={() => setOpenIdx(null)}
+        onClose={handleClose}
         src={active?.url}
         alt={active?.alt ?? ''}
-        onPrev={() => setOpenIdx((i) => (i === null ? i : (i - 1 + designPhotos.length) % designPhotos.length))}
-        onNext={() => setOpenIdx((i) => (i === null ? i : (i + 1) % designPhotos.length))}
+        onPrev={handlePrev}
+        onNext={handleNext}
+        currentIndex={openIdx ?? undefined}
+        totalCount={designPhotos.length}
       />
     </section>
   )

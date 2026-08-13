@@ -1,4 +1,4 @@
-import { carData } from '../data/carData'
+import { carData, formatKm, formatPlnNumber } from '../data/carData'
 import { heroPhoto } from '../data/photos'
 import { ContactButtons } from './ContactButtons'
 import { KeyFacts } from './KeyFacts'
@@ -6,45 +6,40 @@ import { OptimizedImage } from './OptimizedImage'
 
 export function Hero() {
   return (
-    <header className="relative min-h-[85vh] overflow-hidden bg-brand-hero">
+    <header id="hero" className="relative min-h-[100svh] overflow-hidden bg-brand-hero">
       <div className="absolute inset-0">
         <OptimizedImage
           src={heroPhoto.url}
           alt={heroPhoto.alt}
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-[center_55%]"
           priority
+          sizes="100vw"
+          srcWidth={1400}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40" />
+        <div className="hero-scrim absolute inset-0" />
       </div>
 
-      <div className="container relative z-10 flex min-h-[85vh] flex-col justify-center py-16 text-white">
-        <div className="max-w-3xl">
-          <div className="flex flex-wrap items-center gap-3 animate-fade-in">
-            <span className="badge">Raport Sprzedażowy</span>
-            <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide backdrop-blur-md">
-              Od Rodziny Fana Motoryzacji
-            </span>
-          </div>
-          <h1 className="mt-6 animate-slide-up text-4xl font-black tracking-tight drop-shadow-2xl sm:text-5xl md:text-6xl lg:text-7xl">
-            TOYOTA YARIS
-            <br />
-            <span className="text-[--color-tokyo-red] drop-shadow-lg">HYBRID 1.5</span>
-          </h1>
-          <p
-            className="mt-4 animate-slide-up text-lg font-semibold text-white drop-shadow-lg md:text-xl"
-            style={{ animationDelay: '0.1s' }}
-          >
-            PREMIERE EDITION 2020 | KOMPLETNY PAKIET PREMIUM | NISKI PRZEBIEG ASO
+      <div className="container relative z-10 flex min-h-[100svh] flex-col justify-end pb-10 pt-20 text-white sm:justify-center sm:pb-16">
+        <div className="max-w-xl">
+          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/70">
+            Premiere Edition · Polski salon 2020
           </p>
-          <div className="mt-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <h1 className="font-display mt-3 text-5xl leading-none sm:text-6xl md:text-7xl">
+            Yaris Hybrid
+          </h1>
+          <p className="font-display mt-6 text-6xl leading-none tabular-nums text-tokyo-red sm:text-7xl md:text-8xl">
+            {formatPlnNumber(carData.pricePln)}
+          </p>
+          <p className="mt-2 text-sm font-medium tracking-wide text-white/80">
+            PLN · {formatKm(carData.mileageKm)} · {carData.location}
+            {carData.negotiable ? ' · do rozmowy' : ''}
+          </p>
+          <div className="mt-8">
             <ContactButtons size="lg" variant="on-dark" />
-            <div className="mt-4 inline-flex rounded-lg border-2 border-white/50 bg-white/20 px-6 py-3 font-bold text-white shadow-2xl backdrop-blur-md">
-              Cena: {carData.price} {carData.negotiable ? '(do negocjacji)' : ''}
-            </div>
           </div>
         </div>
 
-        <div className="mt-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        <div className="mt-10 sm:mt-14">
           <KeyFacts />
         </div>
       </div>
